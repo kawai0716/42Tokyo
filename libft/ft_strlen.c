@@ -6,13 +6,13 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:54:18 by sykawai           #+#    #+#             */
-/*   Updated: 2024/04/16 17:06:47 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/04/18 14:43:08 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-size_t	strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	a;
 
