@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:56:53 by sykawai           #+#    #+#             */
-/*   Updated: 2024/04/18 19:45:51 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/04/20 13:00:19 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,4 @@ void *ft_calloc(size_t count, size_t size)
 	void *i;
 	i=0;
 	i=(void*)malloc(count*size);
-	while(i!='\0')
-	{
-		i=0;
-		i--;
-	}
 }
