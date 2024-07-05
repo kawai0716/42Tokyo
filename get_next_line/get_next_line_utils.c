@@ -66,3 +66,33 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i[n] = '\0';
 	return (i);
 }
+
+#　\n文字から後ろの文字列を抽出するため
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	size_t	j;
+	size_t	i;
+
+	j = 0;
+	if (!s)
+		return (NULL);
+	while (s[j])
+		j++;
+	if (start >= j)
+		return (ft_strdup(""));
+	i = 0;
+	while (s[start + i] && i < len)
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start + i])
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
