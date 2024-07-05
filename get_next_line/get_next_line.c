@@ -31,4 +31,8 @@ char *get_next_line(int fd)
         save = strjoin(save, str);
         free (c);
 	}
+	if(strchr(save, '\n') == '\n')
+	{
+		
+	}
 }
