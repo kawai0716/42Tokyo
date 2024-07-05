@@ -16,6 +16,7 @@ char *get_next_line(int fd)
 {
     char *save;
     char *str;
+    char *c;
     size_t subread;
     str = (char *)malloc(BUFFER_SIZE + 1);
     save = NULL;
@@ -26,6 +27,8 @@ char *get_next_line(int fd)
         subread = read (fd, str, BUFFER_SIZE);
         if(subread = 0)
             break;
+        c = save;
         save = strjoin(save, str);
-    }
+        free (c);
+	}
 }
