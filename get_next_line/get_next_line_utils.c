@@ -24,6 +24,18 @@ size_t strlen(char *c)
     return(i);
 }
 
+size_t strlen2(char *c)
+{
+    size_t i;
+    i = 0;
+    while(*c != '\n')
+    {
+        c++;
+        i++;
+    }
+    return(i+1);
+}
+
 //文字探索
 char	*ft_strchr(const char *s, int c)
 {
@@ -67,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (i);
 }
 
-#　\n文字から後ろの文字列を抽出するため
+//　\n文字から後ろの文字列を抽出するため
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
@@ -95,4 +107,23 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+// 終端に達した文字列をコピーして返す
+char	*ft_strdup(const char *s1)
+{
+	size_t	n;
+	char	*i;
+
+	i = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	n = 0;
+	if (i == NULL)
+		return (0);
+	while (ft_strlen(s1) > n)
+	{
+		i[n] = s1[n];
+		n++;
+	}
+	i[n] = '\0';
+	return (i);
 }
