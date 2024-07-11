@@ -22,12 +22,12 @@ char *get_next_line(int fd)
     size_t subread;
     str = (char *)malloc(BUFFER_SIZE + 1);
     save = NULL;
-    if(!str || fd != 0)
+    if(!str || fd < 0)
         return (NULL);
     while(strchr(save, '\n') == NULL)
     {
         subread = read (fd, str, BUFFER_SIZE);
-        if(subread = 0)
+        if(subread == 0)
             break;
         c = save;
         save = strjoin(save, str);
