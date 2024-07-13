@@ -26,6 +26,11 @@
 #define BUFFER_SIZE 42
 #endif
 
+#ifndef MAX_FD
+#define MAX_FD 1024
+#endif
+
+
 char *get_next_line(int fd);
 size_t strlen(char *c);
 size_t strlen2(char *c);
