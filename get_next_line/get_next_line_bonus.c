@@ -9,7 +9,7 @@ char *get_next_line(int fd)
 	size_t j;
     size_t subread;
     str = (char *)malloc(BUFFER_SIZE + 1);
-    save = NULL;
+    save[fd] = NULL;
     if(!str || fd < 0 || fd >= OPEN_MAX)
         return (NULL);
     while(strchr(save[fd], '\n') == NULL)
@@ -31,7 +31,7 @@ char *get_next_line(int fd)
 		free (c);
 		return (answer);
 	}
-	else if(save[fd])
+	else
 	{
 		char *answer = strdup(save[fd]);
 		free (save[fd]);
