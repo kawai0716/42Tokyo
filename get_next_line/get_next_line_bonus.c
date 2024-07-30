@@ -36,7 +36,7 @@ char *get_next_line(int fd)
 	}
 	else
 	{
-		char *answer = strdup(save[fd]);
+		answer = strdup(save[fd]);
 		free (save[fd]);
 		save[fd] = NULL;
 		return (answer);
