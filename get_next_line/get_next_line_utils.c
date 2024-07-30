@@ -24,18 +24,6 @@ size_t strlen(char *c)
     return(i);
 }
 
-size_t strlen2(char *c)
-{
-    size_t i;
-    i = 0;
-    while(*c != '\n')
-    {
-        c++;
-        i++;
-    }
-    return(i+1);
-}
-
 //文字探索
 char	*ft_strchr(const char *s, int c)
 {
