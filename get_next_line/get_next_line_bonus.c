@@ -4,7 +4,9 @@ char *get_next_line(int fd)
 {
     char *save[OPEN_MAX];
     char *str;
+	char *answer;
     char *c;
+	char *nl;
 	size_t i;
 	size_t j;
     size_t subread;
@@ -15,17 +17,18 @@ char *get_next_line(int fd)
     while(strchr(save[fd], '\n') == NULL)
     {
         subread = read (fd, str, BUFFER_SIZE);
-        if(subread == 0)
+        if(subread <= 0)
             break;
         c = save[fd];
         save[fd] = strjoin(save[fd], str);
         free (c);
 	}
-	if(strchr(save, '\n') != NULL)
+	free (str);
+	if(nl = strchr(save, '\n') != NULL)
 	{
 		i = strlen(save[fd]);
-		j = strlen2(save[fd]);
-		char *answer = ft_substr(save[fd], 0, j);
+		j = nl - save[fd] + 1;
+		answer = ft_substr(save[fd], 0, j);
 		c = save[fd];
 		save = ft_substr(save[fd], j, i-j);
 		free (c);
