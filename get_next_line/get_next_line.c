@@ -12,32 +12,14 @@
 
 #include  "get_next_line.h"
 
-char *get_next_line(int fd)
+char *result(char *save)
 {
-    char *save;
-    char *str;
-	char *answer;
-    char *c;
-	char *nl;
 	size_t i;
 	size_t j;
-    size_t subread;
-    str = (char *)malloc(BUFFER_SIZE + 1);
-    save = NULL;
-    if(!str || fd < 0)
-        return (NULL);
-    while(strchr(save, '\n') == NULL)
-    {
-        subread = read (fd, str, BUFFER_SIZE);
-        if(subread <= 0)
-            break;
-		str[subread] = NULL;
-        c = save;
-        save = strjoin(save, str);
-        free (c);
-	}
-	free (str);
-	if(nl = strchr(save, '\n') != NULL)
+	char *nl;
+	char *answer;
+	char *c;
+	if((nl = strchr(save, '\n')) != NULL)
 	{
 		i = strlen(save);
 		j = nl - save +1;
@@ -55,4 +37,32 @@ char *get_next_line(int fd)
 		return (answer);
 	}
 	return (0);
+}
+
+char *get_next_line(int fd)
+{
+    char *save;
+    char *str;
+    char *c;
+    size_t subread;
+    str = (char *)malloc(BUFFER_SIZE + 1);
+    save = NULL;
+    if(!str || fd < 0)
+        return (NULL);
+    while(strchr(save, '\n') == NULL)
+    {
+        subread = read (fd, str, BUFFER_SIZE);
+        if(subread <= 0)
+		{
+			free (str);
+			free (save);
+			return (NULL);
+		}
+		str[subread] = '\0';
+        c = save;
+        save = strjoin(save, str);
+        free (c);
+	}
+	free (str);
+	return (result(save));
 }
