@@ -17,6 +17,7 @@ char *get_next_line(int fd)
     char *save;
     char *str;
     char *c;
+	char *nl;
 	size_t i;
 	size_t j;
     size_t subread;
@@ -33,10 +34,10 @@ char *get_next_line(int fd)
         save = strjoin(save, str);
         free (c);
 	}
-	if(strchr(save, '\n') != NULL)
+	if(nl = strchr(save, '\n') != NULL)
 	{
 		i = strlen(save);
-		j = strlen2(save);
+		j = nl - save +1;
 		char *answer = ft_substr(save, 0, j);
 		c = save;
 		save = ft_substr(save, j, i-j);
