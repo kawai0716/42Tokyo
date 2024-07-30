@@ -28,12 +28,14 @@ char *get_next_line(int fd)
     while(strchr(save, '\n') == NULL)
     {
         subread = read (fd, str, BUFFER_SIZE);
-        if(subread == 0)
+        if(subread <= 0)
             break;
+		str[subread] = NULL;
         c = save;
         save = strjoin(save, str);
         free (c);
 	}
+	free (str);
 	if(nl = strchr(save, '\n') != NULL)
 	{
 		i = strlen(save);
