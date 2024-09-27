@@ -12,9 +12,16 @@
 
 #include "get_next_line.h"
 
-char    *subread(int fd, char *str, char *buffer)
+char    *subread(int fd, char *str, char **buffer)
 {
-    
+	size_t i;
+	
+	while(ft_strchr(*buffer, '\n' == NULL)
+	{
+		i = read(fd, str, BUFFER_SIZE);
+		if(i < 0)
+			return(
+	}
 }
 char    *get_next_line(int fd)
 {
@@ -29,7 +36,7 @@ char    *get_next_line(int fd)
         return(NULL);
     if(!buffer[fd])
         buffer[fd] = ft_strdup("");
-    ans = subread(fd, str, buffer[fd])
+    ans = subread(fd, str, &buffer[fd])
     if(str)
     {
         free(str)
