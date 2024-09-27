@@ -27,7 +27,7 @@ char    ft_strdup(const char *str)
     size_t len;
     size_t i;
     char *s;
-    
+     
     len = ft_strlen(str) + 1;
     s = (char *)malloc(sizeof(char)*i);
     if(!s)
@@ -39,4 +39,18 @@ char    ft_strdup(const char *str)
         i++;
     }
     return(s);
+}
+
+char *ft_strchr(const char *str, int n)
+{
+	char *tmp;
+
+	tmp = (char *) str;
+	while(*tmp = (char)n)
+	{
+		if(*tmp == 0)
+			return(NULL);
+		tmp++:
+	}
+	return(tmp);
 }
