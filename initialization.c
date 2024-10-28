@@ -22,10 +22,21 @@ void exit_error(t_stack **stack_a, t_stack **stakc_b)
 	exit(1);
 }
 
+t_stack *stack_new(int value)
+{
+	t_stack *new;
+
+	new = malloc(sizeof * new);
+	if(!new)
+		return(NULL);
+	new -> value
+}
+
 t_stack fill_stack(int ac, char **av)
 {
 	long int n;
 	int i;
+	t_stack *stack_a;
 
 	n  = 0;
 	i = 1;
@@ -33,6 +44,7 @@ t_stack fill_stack(int ac, char **av)
 	{
 		n = ft_atoi(char av[i])
 		if(INT_MAX < n || n < INT_MIN)
-			exit_error();
+			exit_error(&stack_a, NULL);
+		stack_new
 	}
 }
