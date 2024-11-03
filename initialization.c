@@ -29,7 +29,18 @@ t_stack *stack_new(int value)
 	new = malloc(sizeof * new);
 	if(!new)
 		return(NULL);
-	new -> value
+	new -> value = value;
+	new -> index = 0;
+	new -> pos = -1;
+	new -> target_pos = -1;
+	new -> cost_a = -1;
+	new -> cost_b = -1;
+	new -> next = NULL;
+}
+
+void stack_add_botom(t_stack **stack, t_stack *new)
+{
+	
 }
 
 t_stack fill_stack(int ac, char **av)
@@ -45,6 +56,9 @@ t_stack fill_stack(int ac, char **av)
 		n = ft_atoi(char av[i])
 		if(INT_MAX < n || n < INT_MIN)
 			exit_error(&stack_a, NULL);
-		stack_new
+		if(i == 1)
+			stack_a = stack_new((int)n);
+		else
+			stack_add_botom()
 	}
 }
