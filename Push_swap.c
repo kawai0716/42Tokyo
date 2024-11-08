@@ -12,4 +12,4 @@ int main(int ac, char **av)
 	stack_b = NULL;
 	stack_a = intialization;
 	
-	
+}
