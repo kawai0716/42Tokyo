@@ -4,12 +4,13 @@ int main(int ac, char **av)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
+	int i;
 
 	if(ac < 2)
 		return(0);
 	if(!check_number)
 		exit(NULL,NULL);
 	stack_b = NULL;
-	stack_a = intialization;
-	
+	stack_a = fill_stack(ac, av);
+	i = count_stack;
 }
