@@ -38,12 +38,28 @@ t_stack *stack_new(int value)
 	new -> next = NULL;
 }
 
-void stack_add_botom(t_stack **stack, t_stack *new)
+t_stack move_stack_bottom(t_stack *stack)
 {
-	
+	while(stack && stack -> next != NULL)
+		stack = stack -> next;
+	return (stack);
 }
 
-t_stack fill_stack(int ac, char **av)
+void stack_add_botom(t_stack **stack, t_stack *new)
+{
+	t_stack *move;
+	if(!new)
+		return;
+	if(!*stack)
+	{
+		*stack = new;
+		return;
+	}
+	move = move_stack_bottom(*stack);
+	move -> next = new;
+}
+
+t_stack *fill_stack(int ac, char **av)
 {
 	long int n;
 	int i;
@@ -58,7 +74,10 @@ t_stack fill_stack(int ac, char **av)
 			exit_error(&stack_a, NULL);
 		if(i == 1)
 			stack_a = stack_new((int)n);
+			
 		else
-			stack_add_botom()
+			stack_add_botom(&stack_a, stack_new((int)n);
+		i++;
 	}
+	return (stack_a);
 }
