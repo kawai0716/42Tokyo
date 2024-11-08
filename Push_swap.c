@@ -11,6 +11,7 @@ int main(int ac, char **av)
 	if(!check_number)
 		exit(NULL,NULL);
 	stack_b = NULL;
-	stack_a = fill_stack(ac, av);
-	i = count_stack;
+	stac_a = fill_stack(ac, av);
+	i = count_stack(stack_a);
+	give_number(stack_a);
 }
