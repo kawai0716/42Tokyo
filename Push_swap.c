@@ -13,5 +13,5 @@ int main(int ac, char **av)
 	stack_b = NULL;
 	stac_a = fill_stack(ac, av);
 	i = count_stack(stack_a);
-	give_number(stack_a);
+	index_number(stack_a);
 }
