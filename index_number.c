@@ -8,7 +8,10 @@ void index_number(t_stack *stack, int stack_size)
 		top_number = NULL;
 		while(s)
 		{
-			
+			if(s -> value && s -> index == 0)
+			{
+				
+			}
 		}
 	}
 }
