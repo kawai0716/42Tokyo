@@ -18,7 +18,7 @@ static void push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 	else if(stack_size == 3 && !sorted(*stack_a))
 		lj(stack_a);
 	else
-		a;l(stack_a, stack_b);
+		;l(stack_a, stack_b);
 }
 
 int main(int ac, char **av)
