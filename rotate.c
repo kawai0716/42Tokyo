@@ -2,10 +2,8 @@ void rotate(t_stack **stack)
 {
 	t_stack *s;
 	t_stack *s2;
-	s = (*stack) -> next;
-	s2 = *stack;
-	*stack = s;
-	(*stack) -> next = s2;
+
+	
 }
 
 void ra(t_stack **stack_a)
