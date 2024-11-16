@@ -3,7 +3,7 @@ void rotate(t_stack **stack)
 	t_stack *s;
 	t_stack *s2;
 
-	
+	s = *stack;
 }
 
 void ra(t_stack **stack_a)
