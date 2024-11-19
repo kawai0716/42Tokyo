@@ -4,9 +4,10 @@ void rotate(t_stack **stack)
 	t_stack *s2;
 
 	s = *stack
-	*stack = (*stack) -> next;
-	*s2 = stack_bottom(*stack);
-	
+	*stack = s -> next;
+	s2 = stack_bottom(*stack);
+	s -> next = NULL;
+	s2 -> next = s;:
 }
 
 void ra(t_stack **stack_a)
