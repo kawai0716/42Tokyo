@@ -1,5 +1,8 @@
 void reverse_rotate(t_stack **stack)
 {
+	t_stack *s1;
+	t_stack *s2;
+
 	
 }
 
