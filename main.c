@@ -16,7 +16,7 @@ static void push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 	if(stack_size == 2 && !sorted(*stack_a))
 		sa(stack_a);
 	else if(stack_size == 3 && !sorted(*stack_a))
-		lj(stack_a);
+		three_sort(stack_a);
 	else
 		;l(stack_a, stack_b);
 }
