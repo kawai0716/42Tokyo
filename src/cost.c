@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 21:03:30 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 22:11:23 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/05 23:28:33 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 void	cost(t_stack **a, t_stack **b)
 {
+	t_stack *tmp_a;
+	t_stack *tmp_b;
+
+	tmp_a = *a;
+	tmp_b = *b;
 	
 }
