@@ -50,6 +50,6 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 	{
 		get_target_pos(stack_a, stack_b);
-		get_cost();
+		get_cost(stack_a, stack_b);
 	}
 }
