@@ -51,5 +51,6 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	{
 		get_target_pos(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
+		fastest_move(stack_a, stack_b);
 	}
 }

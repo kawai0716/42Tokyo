@@ -28,11 +28,11 @@ void	cost(t_stack **a, t_stack **b)
 		if(tmp_b->pos <= cs_b/2)
 			tmp_b->cost_b = tmp_b->pos;
 		else
-			tmp_b->cost_b = (cs_b - tmp_b->pos);
+			tmp_b->cost_b = (cs_b - tmp_b->pos)*-1;
 		if(tmp_b->target_pos <= cs_a/2)
 			tmp_b->cost_a = tmp_b->target_pospos;
 		else
-			tmp_b->cost_a = (cs_a - tmp_b->target_pospos);
+			tmp_b->cost_a = (cs_a - tmp_b->target_pospos)*-1;
 		tmp_b = tmp_b->next;
 	}
 }

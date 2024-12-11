@@ -20,3 +20,29 @@ void	ft_putchr(char *s)
 		s++;
 	}
 }
+
+int	ft_atoi(char *str)
+{
+	int result;
+	int sign;
+
+	result = 0;
+	sign = 1;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + *str - '0';
+		str++;
+	}
+	return (sign * result);
+}
+
+int	change_plus(int i)
+{
+	if(i<0)
+		return(i*-1);
+	return(i);
+}
