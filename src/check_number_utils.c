@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:19:10 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 19:25:57 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/11 17:59:57 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ int	same_number(const char *s1, const char *s2)
 		i++;
 		j++;
 	}
-	//ここでunsigned charなのは、符号付のため128だとオーバーしてしまうから255にしたいから
 	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }

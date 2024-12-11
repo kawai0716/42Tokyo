@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:19:06 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 19:25:59 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/11 17:45:22 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	doplicates(char **av)
 		j = 1;
 		while (av[j])
 		{
-			if (i = !j && same_number(av[i], av[j]) == 0)
+			if (i != j && same_number(av[i], av[j]) == 0)
 				return (1);
 			j++;
 		}
@@ -62,8 +62,8 @@ static int	doplicates(char **av)
 
 int	check_number(char **av)
 {
-	int n;
-	int zero;
+	int	n;
+	int	zero;
 
 	n = 1;
 	zero = 0;
@@ -76,7 +76,6 @@ int	check_number(char **av)
 	}
 	if (zero > 1)
 		return (0);
-	//重複文字があったら真である１を返すため！はいらない
 	if (duplicates(av))
 		return (0);
 	return (1);

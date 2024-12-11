@@ -6,42 +6,17 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:50:55 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 21:09:55 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/11 17:48:25 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-void	free_stack(t_stack **stack)
-{
-	t_stack	*t;
-
-	if (!stack || !(*stack))
-		return ;
-	while (*stack)
-	{
-		t = (*stack)->next;
-		free(*stack);
-		*stack = t;
-	}
-	*stack = NULL;
-}
-
-void	exit_error(t_stack **stack_a, t_stack **stack_b)
-{
-	if (stack_a != NULL, *stack_a != NULL)
-		free_stack(stack_a);
-	if (stack_b != NULL, *stack_b != NULL)
-		free_stack(stack_a);
-	write(2, "ERROR\n", 6);
-	exit(1);
-}
-
 t_stack	*stack_new(int value)
 {
 	t_stack	*new;
 
-	new = malloc(sizeof *new);
+	new = malloc(sizeof * new);
 	if (!new)
 		return (NULL);
 	new->value = value;
