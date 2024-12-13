@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+kawai.16716@gmail.com/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
@@ -41,6 +41,52 @@ void	move_stack_b(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+int lowest_number_pos(t_stack **a)
+{
+	t_stack *tmp_a;
+	int lowest_index;
+	int lowest_pos;
+
+	get_pos(a);
+	tmp_a = *a:
+	lowest_index = INT_MAX;
+	while(tmp_a)
+	{
+		if(tmp_a->index < lowest_index)
+		{
+			lowest_index = tmp_a->index;
+			lowest_pos = tmp->pos; 
+		}
+		tmp_a = tmp_a->next;
+	}
+	return(lowest_pos);
+}
+
+void last_check_stack(t_stack **a)
+{
+	int size;
+	int lowest_num_pos;
+
+	size = count_stack(*a);
+	lowest_num_pos = lowest_number_pos(a);
+	if(lowest_num_pos <= size/2)
+	{
+		while(lowest_num_pos>0)
+		{
+			ra(a);
+			lowest_num_pos--;
+		}
+	}
+	else
+	{
+		while(lowest_num_pos < size)
+		{
+			rra(a);
+			lowest_num_pos++;
+		}
+	}
+}
+
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
 	move_stack_b(stack_a, stack_b);
@@ -53,4 +99,6 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 		get_cost(stack_a, stack_b);
 		fastest_move(stack_a, stack_b);
 	}
+	if(!sorted(*stack_a))
+	last_check_stack(stack_a);
 }
