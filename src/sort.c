@@ -12,7 +12,7 @@ kawai.16716@gmail.com/* ********************************************************
 
 #include "Push_swap.h"
 
-void	move_stack_b(t_stack **stack_a, t_stack **stack_b)
+static void	move_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_size;
 	int	push_count;
@@ -41,7 +41,7 @@ void	move_stack_b(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-int lowest_number_pos(t_stack **a)
+static int lowest_number_pos(t_stack **a)
 {
 	t_stack *tmp_a;
 	int lowest_index;
@@ -62,7 +62,7 @@ int lowest_number_pos(t_stack **a)
 	return(lowest_pos);
 }
 
-void last_check_stack(t_stack **a)
+static void last_check_stack(t_stack **a)
 {
 	int size;
 	int lowest_num_pos;

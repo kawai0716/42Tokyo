@@ -46,9 +46,9 @@ void	ft_putchr(char *s)
 	}
 }
 
-int	ft_atoi(char *str)
+long int	ft_atoi(char *str)
 {
-	int	result;
+	long int	result;
 	int	sign;
 
 	result = 0;

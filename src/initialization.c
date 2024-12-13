@@ -28,13 +28,6 @@ t_stack	*stack_new(int value)
 	new->next = NULL;
 }
 
-t_stack	*move_stack_bottom(t_stack *stack)
-{
-	while (stack && stack->next != NULL)
-		stack = stack->next;
-	return (stack);
-}
-
 void	stack_add_botom(t_stack **stack, t_stack *new)
 {
 	t_stack	*move;

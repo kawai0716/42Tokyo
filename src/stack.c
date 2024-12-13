@@ -12,7 +12,7 @@
 
 #include "Push_swap.h"
 
-t_stack	*stack_bottom(t_stack *stack)
+t_stack	*move_stack_bottom(t_stack *stack)
 {
 	while (stack != NULL && stack->next != NULL)
 		stack = stack->next;

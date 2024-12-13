@@ -17,7 +17,7 @@ static void	reverse_rotate(t_stack **stack)
 	t_stack	*s1;
 	t_stack	*s2;
 
-	s1 = stack_bottom(*stack);
+	s1 = move_stack_bottom(*stack);
 	s2 = stack_second_bottom(*stack);
 	s1->next = *stack;
 	s2->next = NULL;
