@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:15 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 19:26:15 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:35:19 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ static void	reverse_rotate(t_stack **stack)
 
 void	rra(t_stack **stack_a)
 {
-	reverce_rotate(stack_a);
+	reverse_rotate(stack_a);
 	ft_putstr("rra");
 }
 
 void	rrb(t_stack **stack_b)
 {
-	reverce_rotate(stack_b);
+	reverse_rotate(stack_b);
 	ft_putstr("rrb");
 }
 
-void	rra(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	reverce_rotate(stack_a);
-	reverce_rotate(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 	ft_putstr("rrr");
 }

@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:50:47 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 19:15:33 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:28:19 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	index_number(t_stack *stack, int stack_size)
 		while (s)
 		{
 			if (s->value == i && s->index == 0)
-				s->index == 1;
+				s->index = 1;
 			if (s->value > i && s->index == 0)
 			{
 				i = s->value;

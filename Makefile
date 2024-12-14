@@ -9,8 +9,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo "───────────▄───────────"
 	@echo "────────▄▀░░░░░░░░▀▄─────"
 	@echo "──────▄▀░░░░░░░░░░░░▀▄────"

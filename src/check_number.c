@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:19:06 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/11 17:45:22 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:22:33 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	zero_count(char *av)
 	return (1);
 }
 
-static int	doplicates(char **av)
+static int	duplicates(char **av)
 {
 	int	i;
 	int	j;

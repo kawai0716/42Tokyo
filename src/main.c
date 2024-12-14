@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:03 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/11 18:23:37 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:21:15 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	if (!check_number(av))
-		exit(NULL, NULL);
+		exit(EXIT_FAILURE);
 	stack_b = NULL;
 	stack_a = fill_stack(ac, av);
 	i = count_stack(stack_a);
@@ -50,5 +50,5 @@ int	main(int ac, char **av)
 	push_swap(&stack_a, &stack_b, i);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	reutnr(0);
+	return (0);
 }

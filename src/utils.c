@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:51 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/11 18:00:32 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:42:40 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void	free_stack(t_stack **stack)
 
 void	exit_error(t_stack **stack_a, t_stack **stack_b)
 {
-	if (stack_a != NULL, *stack_a != NULL)
+	if (stack_a != NULL && *stack_a != NULL)
 		free_stack(stack_a);
-	if (stack_b != NULL, *stack_b != NULL)
+	if (stack_b != NULL && *stack_b != NULL)
 		free_stack(stack_a);
 	write(2, "ERROR\n", 6);
 	exit(1);
 }
 
-void	ft_putchr(char *s)
+void	ft_putstr(char *s)
 {
 	while (*s)
 	{
@@ -49,7 +49,7 @@ void	ft_putchr(char *s)
 long int	ft_atoi(char *str)
 {
 	long int	result;
-	int	sign;
+	int			sign;
 
 	result = 0;
 	sign = 1;

@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 21:03:30 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/11 14:41:06 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:23:55 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	cost(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
-	int		ca_a;
+	int		cs_a;
 	int		cs_b;
 
 	tmp_a = *a;
@@ -30,9 +30,9 @@ void	cost(t_stack **a, t_stack **b)
 		else
 			tmp_b->cost_b = (cs_b - tmp_b->pos) * -1;
 		if (tmp_b->target_pos <= cs_a / 2)
-			tmp_b->cost_a = tmp_b->target_pospos;
+			tmp_b->cost_a = tmp_b->target_pos;
 		else
-			tmp_b->cost_a = (cs_a - tmp_b->target_pospos) * -1;
+			tmp_b->cost_a = (cs_a - tmp_b->target_pos) * -1;
 		tmp_b = tmp_b->next;
 	}
 }

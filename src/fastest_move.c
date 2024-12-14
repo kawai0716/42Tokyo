@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:32:36 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/11 15:34:38 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 06:27:37 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	fastest_move(t_stack **a, t_stack **b)
 		}
 		tmp_b = tmp_b->next;
 	}
-	optimal_moves(a, b, cost_a, cost_b);
+	optimal_move(a, b, c_a, c_b);
 }
