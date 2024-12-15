@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:19:06 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 06:22:33 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 07:32:53 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	zero_count(char *av)
 	int	n;
 
 	n = 0;
-	if (ft_sign(av[n]) && av[n + 1])
+	if (ft_sign(av[n]))
 		n++;
 	while (av[n] && av[n] == '0')
 		n++;

@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:50:55 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 06:31:36 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 07:43:52 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack	*stack_new(int value)
 {
 	t_stack	*new;
 
-	new = malloc(sizeof *new);
+	new = malloc(sizeof * new);
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -52,6 +52,7 @@ t_stack	*fill_stack(int ac, char **av)
 
 	n = 0;
 	i = 1;
+	stack_a = NULL;
 	while (i < ac)
 	{
 		n = ft_atoi(av[i]);

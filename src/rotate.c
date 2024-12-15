@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:20 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/05 19:26:17 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 08:18:36 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rotate(t_stack **stack)
 	t_stack	*s2;
 
 	s = *stack;
-	*stack = s->next;
+	*stack = (*stack)->next;
 	s2 = move_stack_bottom(*stack);
 	s->next = NULL;
 	s2->next = s;

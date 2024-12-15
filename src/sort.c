@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:15:00 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 06:39:57 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 08:45:31 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 {
 	move_stack_b(stack_a, stack_b);
 	three_sort(stack_a);
-	get_pos(stack_a);
-	get_pos(stack_b);
 	while (*stack_b)
 	{
 		get_target_pos(stack_a, stack_b);
