@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:03 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 08:11:14 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 13:34:29 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !sorted(*stack_a))
 		sa(stack_a);
-	else if (stack_size == 3 && !sorted(*stack_a))
+	else if (stack_size == 3)
 		three_sort(stack_a);
 	else if (stack_size > 3 && !sorted(*stack_a))
 		sort(stack_a, stack_b);

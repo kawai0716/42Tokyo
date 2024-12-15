@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:15 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 06:35:19 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 10:48:59 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ static void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*s1;
 	t_stack	*s2;
+	t_stack	*tmp;
 
 	s1 = move_stack_bottom(*stack);
 	s2 = stack_second_bottom(*stack);
-	s1->next = *stack;
+	tmp = *stack;
+	*stack = s1;
+	(*stack)->next = tmp;
 	s2->next = NULL;
 }
 

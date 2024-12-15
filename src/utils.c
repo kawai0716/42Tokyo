@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:51:51 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 07:33:53 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 11:26:51 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_putstr(char *s)
 	}
 }
 
-long int	ft_atoi(char *str)
+long int	ft_atoi(const char *str)
 {
 	long int	result;
 	int			sign;

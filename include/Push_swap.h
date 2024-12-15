@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:02:54 by sykawai           #+#    #+#             */
-/*   Updated: 2024/12/15 06:34:08 by sykawai          ###   ########.fr       */
+/*   Updated: 2024/12/15 11:28:04 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void				three_sort(t_stack **stack);
 void				free_stack(t_stack **stack);
 void				exit_error(t_stack **stack_a, t_stack **stack_b);
 void				ft_putstr(char *s);
-long int			ft_atoi(char *str);
+long int			ft_atoi(const char *str);
 int					change_plus(int i);
 
 #endif
