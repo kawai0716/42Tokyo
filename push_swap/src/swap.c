@@ -3,59 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 16:55:55 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/30 13:25:21 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/12/16 18:07:15 by marvin            #+#    #+#             */
+/*   Updated: 2024/12/16 18:07:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* swap:
-*	Swaps the top 2 elements of a stack.
-*	Does nothing if there is only one or no elements.
-*/
 static void	swap(t_stack *stack)
 {
-	int	tmp;
+	int	n;
 
-	if (stack == NULL || stack->next == NULL)
+	if (!stack && !stack->next)
 		return ;
-	tmp = stack->value;
+	n = stack->value;
 	stack->value = stack->next->value;
-	stack->next->value = tmp;
-	tmp = stack->index;
+	stack->next->value = n;
+	n = stack->index;
 	stack->index = stack->next->index;
-	stack->next->index = tmp;
+	stack->next->index = n;
 }
 
-/* do_sa:
-*	Swaps the top 2 elements of stack a.
-*	Prints "sa" to the standard output.
-*/
-void	do_sa(t_stack **stack_a)
+void	sa(t_stack **stack_a)
 {
 	swap(*stack_a);
 	ft_putstr("sa\n");
 }
 
-/* do_sb:
-*	Swaps the top 2 elements of stack b.
-*	Prints "sb" to the standard output.
-*/
-void	do_sb(t_stack **stack_b)
+void	sb(t_stack **stack_b)
 {
 	swap(*stack_b);
 	ft_putstr("sb\n");
 }
 
-/* do_ss:
-*	Swaps the top 2 elements of stack a and the top 2 elements
-*	of stack b.
-*	Prints "ss" to the standard output.
-*/
-void	do_ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(*stack_a);
 	swap(*stack_b);

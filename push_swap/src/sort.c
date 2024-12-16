@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 13:32:10 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/30 17:39:26 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/12/16 18:06:55 by marvin            #+#    #+#             */
+/*   Updated: 2024/12/16 18:06:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* push_all_save_three:
-*	Pushes all the elements of stack a into stack b, except the three last ones.
-*	Pushes the smaller values first, and then the larger values to help with
-*	sorting efficiency.
-*/
-static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
+static void	move_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_size;
 	int	pushed;
@@ -30,68 +25,76 @@ static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->index <= stack_size / 2)
 		{
-			do_pb(stack_a, stack_b);
+			pb(stack_a, stack_b);
 			pushed++;
 		}
 		else
-			do_ra(stack_a);
+			ra(stack_a);
 		i++;
 	}
 	while (stack_size - pushed > 3)
 	{
-		do_pb(stack_a, stack_b);
+		pb(stack_a, stack_b);
 		pushed++;
 	}
 }
 
-/* shift_stack:
-*	After the bulk of the stack is sorted, shifts stack a until the lowest
-*	value is at the top. If it is in the bottom half of the stack, reverse
-*	rotate it into position, otherwise rotate until it is at the top of the
-*	stack.
-*/
-static void	shift_stack(t_stack **stack_a)
+static int	lowest_number_pos(t_stack **a)
 {
-	int	lowest_pos;
-	int	stack_size;
+	t_stack	*tmp_a;
+	int		lowest_index;
+	int		lowest_pos;
 
-	stack_size = get_stack_size(*stack_a);
-	lowest_pos = get_lowest_index_position(stack_a);
-	if (lowest_pos > stack_size / 2)
+	get_pos(a);
+	tmp_a = *a;
+	lowest_index = INT_MAX;
+	while (tmp_a)
 	{
-		while (lowest_pos < stack_size)
+		if (tmp_a->index < lowest_index)
 		{
-			do_rra(stack_a);
-			lowest_pos++;
+			lowest_index = tmp_a->index;
+			lowest_pos = tmp_a->pos;
+		}
+		tmp_a = tmp_a->next;
+	}
+	return (lowest_pos);
+}
+
+static void	last_check_stack(t_stack **stack_a)
+{
+	int	size;
+	int	lowest_num_pos;
+
+	size = count_stack(*a);
+	lowest_num_pos = lowest_number_pos(a);
+	if (lowest_num_pos <= size / 2)
+	{
+		while (lowest_num_pos > 0)
+		{
+			ra(a);
+			lowest_num_pos--;
 		}
 	}
 	else
 	{
-		while (lowest_pos > 0)
+		while (lowest_num_pos < size)
 		{
-			do_ra(stack_a);
-			lowest_pos--;
+			rra(a);
+			lowest_num_pos++;
 		}
 	}
 }
 
-/* sort:
-*	Sorting algorithm for a stack larger than 3.
-*		Push everything but 3 numbers to stack B.
-*		Sort the 3 numbers left in stack A.
-*		Calculate the most cost-effective move.
-*		Shift elements until stack A is in order.
-*/
-void	sort(t_stack **stack_a, t_stack **stack_b)
+sort(t_stack **stack_a, t_stack **stack_b)
 {
-	push_all_save_three(stack_a, stack_b);
-	tiny_sort(stack_a);
+	move_stack_b(stack_a, stack_b);
+	three_sort(stack_a);
 	while (*stack_b)
 	{
 		get_target_position(stack_a, stack_b);
-		get_cost(stack_a, stack_b);
-		do_cheapest_move(stack_a, stack_b);
+		cost(stack_a, stack_b);
+		fastest_move(stack_a, stack_b);
 	}
-	if (!is_sorted(*stack_a))
-		shift_stack(stack_a);
+	if (!sorted(*stack_a))
+		last_check_stack(stack_a);
 }
