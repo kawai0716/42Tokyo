@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   three_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/16 18:07:27 by marvin            #+#    #+#             */
+/*   Updated: 2024/12/17 15:28:38 by sykawai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static int	find_highest_index(t_stack *stack)
+{
+	int		index;
+
+	index = stack->index;
+	while (stack)
+	{
+		if (stack->index > index)
+			index = stack->index;
+		stack = stack->next;
+	}
+	return (index);
+}
+
+void	three_sort(t_stack **stack)
+{
+	int		highest;
+
+	if (sorted(*stack))
+		return ;
+	highest = find_highest_index(*stack);
+	if ((*stack)->index == highest)
+		ra(stack);
+	else if ((*stack)->next->index == highest)
+		rra(stack);
+	if ((*stack)->index > (*stack)->next->index)
+		sa(stack);
+}
