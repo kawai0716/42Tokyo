@@ -12,10 +12,13 @@
 
 #include "minitalk.h"
 
-//avにはPIDと文字列が渡される
+//コマンドライン引数ではac = 2にはpidでac = 3には受信する文字
 int main(int ac, char **av)
 {
     if(av < 2)
         return(0);
-    if()
+    if(av == 3)
+    {
+        
+    }
 }
