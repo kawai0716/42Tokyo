@@ -10,3 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void a(int signal)
+{
+    unsigned char c;
+    int i;
+    
+}
+int main(void)
+{
+    printf("%d\n", getpid());
+    signal(SIGUSR1, a);
+    signal(SIGUSR2, a);
+    while(1)
+        pause();
+    return(0);
+}
