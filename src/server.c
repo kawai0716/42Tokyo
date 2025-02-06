@@ -13,8 +13,19 @@
 void a(int signal)
 {
     unsigned char c;
-    int i;
+    int bit_count;
     
+    if(signal == SIGUSR1)
+        c |= 1;
+    bit_count++;
+    if(bit_count == 8)
+    { 
+        ft_printf("%d", c);
+        bit_count = 0;
+        c = 0;
+    }
+    else
+        c <<=a 1;
 }
 int main(void)
 {
