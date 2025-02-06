@@ -12,10 +12,14 @@
 
 int main(int ac, char **av)
 {
+	pid_t pid;
+	char message;
     if(ac != 3)
     	{
-      		printf("Usage: %s <pid> <message>\n", av[0]))
-					exit(end
+      		printf("Usage: %s <pid> <message>\n", av[0]));
+			exit(EXIT_FAILURE);
     	}
-        
+	pid = ft_atoi(av[1]);
+	message = av[2];
+	
 }
