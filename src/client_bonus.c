@@ -12,5 +12,10 @@
 
 int main(int ac, char **av)
 {
-    
+    if(ac != 3)
+    	{
+      		printf("Usage: %s <pid> <message>\n", av[0]))
+					exit(end
+    	}
+        
 }
