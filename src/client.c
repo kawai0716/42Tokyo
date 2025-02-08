@@ -38,7 +38,7 @@ void send_to_server(unsigned char c, int pid)
 {
     int i;
 
-    i = 8;
+    i = 7;
     while(i>0)
     {
         if((c & (0×01 << i)))
