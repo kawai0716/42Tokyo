@@ -21,7 +21,7 @@ void send_to_server(char message, int pid)
 		else
 			kill(SIGUSR2,pid);
 		i--;
-		usleep(42);
+		usleep(420);
 	}
 }
 
