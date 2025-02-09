@@ -46,7 +46,7 @@ void send_to_server(unsigned char c, int pid)
         else
             kill(pid, SIGUSR2);
         i--;
-        usleep(42);
+        usleep(420);
     }
 }
 
