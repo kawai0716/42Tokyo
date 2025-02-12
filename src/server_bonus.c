@@ -12,6 +12,10 @@
 
 #include "minitalk.h"
 
+void a(int signal, siginfo_t *info, void *context)
+{
+	
+}
 int main(void)
 {
 	
