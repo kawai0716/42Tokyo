@@ -25,7 +25,7 @@ void a(int signal)
         c = 0;
     }
     else
-        c <<=a 1;
+        c <<= 1;
 }
 int main(void)
 {
