@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void send_to_server(char message, int pid)
+void send_to_server(unsigned char message, int pid)
 {
 	int i;
 	i = 7;
