@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:05 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 18:21:15 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/02/18 19:32:59 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,21 @@ void	send_to_server(unsigned char message, int pid)
 void	a(int signal)
 {
 	if (signal == SIGUSR1)
-		ft_printf();
+		ft_printf("OK");
 	else
-		ft_printf();
+		ft_printf("OK");
 }
 
 int	main(int ac, char **av)
 {
 	pid_t	pid;
-	char	message;
+	char	*message;
 	int		i;
 
 	signal(SIGUSR1, a);
 	signal(SIGUSR2, a);
 	if (ac != 3)
-	{
-		printf("Usage: %s <pid> <message>\n", av[0]);
 		exit(1);
-	}
 	pid = ft_atoi(av[1]);
 	message = av[2];
 	i = 0;

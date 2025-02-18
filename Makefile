@@ -1,16 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf obj/
-INCS = -I./include -I./printf/include/
+INCS = -I. -I./include -I./printf/include -I./Libft
 NAME = minitalk
 
 SRC_PATH = src/
 OBJ_PATH = obj/
 
 SRC = client.c server.c client_bonus.c server_bonus.c
-SRCS $(addprefix $(SRC_PATH), $(SRC))
+SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJ = $(SRC:.c=.o)
-OBJS $(addprefix $(OBJ_PATH), $(OBJ))
+OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 
 all: $(OBJ_PATH) $(NAME)
 

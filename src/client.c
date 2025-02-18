@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 18:20:05 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/02/18 19:49:25 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ int	main(int ac, char **av)
 
 	message = av[2];
 	i = 0;
-	if (av != 3)
-	{
-		ft_printf("Usage %s <PID> <MWSSAGE>\n", av[0]);
+	if (ac != 3)
 		exit(1);
-	}
 	pid = ft_atoi(av[1]);
 	pid_error(pid);
 	while (message[i])

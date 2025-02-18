@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:09 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 18:13:27 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/02/18 20:01:45 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	a(int signal, siginfo_t *info, void *context)
 {
-	unsigned char	c;
-	int				bit_count;
+	static unsigned char	c;
+	static int				bit_count;
 
 	(void)context;
 	bit_count = 0;
-	c = NULL;
+	c = 0;
 	if (signal == SIGUSR1)
 		c |= 1;
 	bit_count++;
 	if (bit_count == 8)
 	{
-		printf("%s", c);
+		if (c == '\0')
+			ft_printf("\n");
+		else
+			ft_printf("%c", c);
 		c = 0;
 		bit_count = 0;
 	}
@@ -41,9 +44,10 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	sa.sa_handler = a;
+	sa.sa_sigaction = &a;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
+	ft_printf("%d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

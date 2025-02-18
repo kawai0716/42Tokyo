@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 18:12:47 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/02/18 20:01:53 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,20 @@
 
 void	a(int signal)
 {
-	unsigned char	c;
-	int				bit_count;
+	static char	c;
+	static int	bit_count;
 
+	bit_count = 0;
+	c = 0;
 	if (signal == SIGUSR1)
 		c |= 1;
 	bit_count++;
 	if (bit_count == 8)
 	{
-		ft_printf("%d", c);
+		if (c == '\0')
+			ft_printf("\n");
+		else
+			ft_printf("%c", c);
 		bit_count = 0;
 		c = 0;
 	}
@@ -32,7 +37,7 @@ void	a(int signal)
 
 int	main(void)
 {
-	printf("%d\n", getpid());
+	ft_printf("%d\n", getpid());
 	signal(SIGUSR1, a);
 	signal(SIGUSR2, a);
 	while (1)
