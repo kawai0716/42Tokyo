@@ -1,1 +1,8 @@
-void mandelbrot
+void mandelbrot()
+{
+	a
+}
+void julia()
+{
+  
+}
