@@ -1,6 +1,6 @@
 void fractol_check(char **av)
 {
-    char *mandelbrottmp;
+    char *tmp;
 
     tmp = av[1];
     if(!ft_strncmp(tmp, "mandelbrot", 10) && ft_strlen(tmp) == 10)
