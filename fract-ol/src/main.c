@@ -4,9 +4,9 @@ void fractol_check(char **av, t_fractol fractol)
 
     tmp = av[1];
     if(!ft_strncmp(tmp, "mandelbrot", 10) && ft_strlen(tmp) == 10)
-        mandelbrot_set(fractol);
+        mandelbrot_set(&fractol,av[1]);
     else if(!ft_strncmp(tmp, "julia", 5) && ft_strlen(tmp) == 5)
-        julia_set(fractol);
+        julia_set(&fractol,av[1]);
     else if
 }
 
