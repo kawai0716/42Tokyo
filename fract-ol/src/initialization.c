@@ -1,8 +1,8 @@
-void mandelbrot()
+void mandelbrot_set(t_fractol *fractol, char *name)
 {
-	a
+	fractol->n
 }
-void julia()
+void julia(t_fractol *fractol, char *name)
 {
   
 }
