@@ -16,3 +16,9 @@ typedef struct s_fractol
     double 
     int color;
 }   t_fractol;
+
+//initialization
+void mandelbrot_set(t_fractol *fractol, char *name);
+void julia(t_fractol *fractol, char *name);
+
+
