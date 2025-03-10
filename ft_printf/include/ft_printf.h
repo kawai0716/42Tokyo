@@ -6,14 +6,14 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 23:09:43 by syuto             #+#    #+#             */
-/*   Updated: 2024/06/14 21:11:41 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/03/10 17:53:11 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
 # include <stddef.h>

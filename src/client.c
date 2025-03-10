@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 19:49:25 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/03/10 18:11:11 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	send_to_server(unsigned char c, int pid)
 	int	i;
 
 	i = 7;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if ((c & (0x01 << i)))
 			kill(pid, SIGUSR1);
@@ -43,10 +43,10 @@ int	main(int ac, char **av)
 	char	*message;
 	int		i;
 
-	message = av[2];
-	i = 0;
 	if (ac != 3)
 		exit(1);
+	message = av[2];
+	i = 0;
 	pid = ft_atoi(av[1]);
 	pid_error(pid);
 	while (message[i])

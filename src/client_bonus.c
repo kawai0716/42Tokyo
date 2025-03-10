@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:05 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 19:32:59 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/03/10 18:49:58 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	send_to_server(unsigned char message, int pid)
 	int	i;
 
 	i = 7;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if (message & (0x01 << i))
-			kill(SIGUSR1, pid);
+			kill(pid, SIGUSR1);
 		else
-			kill(SIGUSR2, pid);
+			kill(pid, SIGUSR2);
 		i--;
 		usleep(420);
 	}
@@ -31,9 +31,9 @@ void	send_to_server(unsigned char message, int pid)
 void	a(int signal)
 {
 	if (signal == SIGUSR1)
-		ft_printf("OK");
+		ft_printf("OK\n");
 	else
-		ft_printf("OK");
+		ft_printf("OK\n");
 }
 
 int	main(int ac, char **av)

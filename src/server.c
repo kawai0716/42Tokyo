@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/02/18 20:01:53 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/03/10 18:09:45 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	a(int signal)
 {
-	static char	c;
-	static int	bit_count;
+	static char	c = 0;
+	static int	bit_count = 0;
 
-	bit_count = 0;
-	c = 0;
 	if (signal == SIGUSR1)
 		c |= 1;
 	bit_count++;
