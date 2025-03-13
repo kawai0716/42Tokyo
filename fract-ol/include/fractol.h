@@ -14,6 +14,8 @@ typedef struct s_fractol
     char *name;
     double zoom;
     double 
+    int height;
+    int width
     int color;
 }   t_fractol;
 
