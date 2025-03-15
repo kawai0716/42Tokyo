@@ -1,3 +1,4 @@
+
 void fractol_check(char **av, t_fractol *fractol)
 {
     char *tmp;
@@ -19,7 +20,9 @@ int main(int ac,char **av)
     {
         fractol_check(av,&fractol);
     	fractol.mlx = mlx_init();
-		fractol.win = mlx_new_window(fractol.mlx, fractol.);
+		fractol.win = mlx_new_window(fractol.mlx, fractol.width, fractol.height, fractol.name);
+        fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
+        fractol.
     }
 
     return(0);
