@@ -6,6 +6,9 @@
 #include <math.h>
 #include <stdio.h>
 
+# define X11_ESC 65307
+# define close_window_button 17
+
 typedef struct s_fractol
 {
     void *mlx;
