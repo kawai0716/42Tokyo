@@ -22,8 +22,13 @@ int main(int ac,char **av)
     	fractol.mlx = mlx_init();
 		fractol.win = mlx_new_window(fractol.mlx, fractol.width, fractol.height, fractol.name);
         fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
-        fractol.
+		fractol_update(&fractol);
+        mlx_key_hook(fractol.mlx, key_action,&fractol);
+		mlx_mouse_hook(fractol.mlx,　mouse_action, &fractol);
+		mlx_hook(fractol.mlx, close_window_button, , , &fractol);
+		mlx_loop(fractol.mlx);
     }
+	
 
     return(0);
 }
