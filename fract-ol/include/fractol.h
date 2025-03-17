@@ -15,6 +15,7 @@ typedef struct s_fractol
     void *win;
     void *img;
     char *name;
+    char *addr;
     double zoom;
     double 
     int *bits_per_pixel;

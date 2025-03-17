@@ -5,9 +5,9 @@ void fractol_check(char **av, t_fractol *fractol)
 
     tmp = av[1];
     if(!ft_strncmp(tmp, "mandelbrot", 10) && ft_strlen(tmp) == 10)
-        mandelbrot_set(fractol,av[1]);
+        mandelbrot(fractol,av[1]);
     else if(!ft_strncmp(tmp, "julia", 5) && ft_strlen(tmp) == 5)
-        julia_set(fractol,av[1]);
+        julia(fractol,av[1]);
     else if(!ft_strncmp(tmp, "", ) && ft_strlen(tmp) == )
 		_set(fractol,av[1]);
 }
@@ -24,7 +24,7 @@ int main(int ac,char **av)
         fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
 		fractol_update(&fractol);
         mlx_key_hook(fractol.mlx, key_action,&fractol);
-		mlx_mouse_hook(fractol.mlx,　mouse_action, &fractol);
+		mlx_mouse_hook(fractol.mlx, mouse_action, &fractol);
 		mlx_hook(fractol.mlx, close_window_button, , , &fractol);
 		mlx_loop(fractol.mlx);
     }
