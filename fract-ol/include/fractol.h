@@ -27,12 +27,16 @@ typedef struct s_fractol
     char *name;
     char *addr;
     double zoom;
-    double 
-    int *bits_per_pixel;
-    int *size_line;
-    int *endian;
+    double x;
+    double y;
+    double xarrow;
+    double yarrow
+    int bits_per_pixel;
+    int size_line;
+    int endian;
     int height;
-    int width
+    int width;
+    int 
     int color;
 }   t_fractol;
 
