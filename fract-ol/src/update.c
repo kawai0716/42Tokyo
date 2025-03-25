@@ -1,3 +1,4 @@
+#include "fractol.h"
 void fractol_update(t_struct *fractol)
 {
 	mlx_destroy_image(fractol->mlx, fractol->img);

@@ -6,7 +6,17 @@
 #include <math.h>
 #include <stdio.h>
 
-# define X11_ESC 65307
+# define ESC 65307
+# define right 65363
+# define left 65361
+# define up 65362
+# define down 65364
+# define plus 65451
+# define minus 65453
+# define scroll_up 4
+# define scroll_down 5
+# define
+# define
 # define close_window_button 17
 
 typedef struct s_fractol

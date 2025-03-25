@@ -1,3 +1,4 @@
+#include "fractol.h"
 void mandelbrot(t_fractol *fractol, char *name)
 {
 	fractol->name=name;
