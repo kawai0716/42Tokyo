@@ -35,7 +35,7 @@ void	a(int signal)
 
 int	main(void)
 {
-	ft_printf("%d\n", getpid());
+	ft_printf("Server PID: %d\n", getpid());
 	signal(SIGUSR1, a);
 	signal(SIGUSR2, a);
 	while (1)
