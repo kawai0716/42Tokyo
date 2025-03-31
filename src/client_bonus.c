@@ -36,6 +36,15 @@ void	a(int signal)
 		ft_printf("OK\n");
 }
 
+void	pid_error(int pid)
+{
+	if (pid <= 0 || kill(pid, 0) == -1)
+	{
+		ft_printf("Inavalid PID\n");
+		exit(1);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	pid_t	pid;
@@ -47,6 +56,7 @@ int	main(int ac, char **av)
 	if (ac != 3)
 		exit(1);
 	pid = ft_atoi(av[1]);
+	pid_error(pid);
 	message = av[2];
 	i = 0;
 	while (message[i])
