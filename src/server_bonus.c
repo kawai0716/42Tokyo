@@ -12,7 +12,7 @@
 
 #include "minitalk_bonus.h"
 
-void	a(int signal, siginfo_t *info, void *context)
+void	combine(int signal, siginfo_t *info, void *context)
 {
 	static unsigned char	c = 0;
 	static int				bit_count = 0;
@@ -40,7 +40,7 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	sa.sa_sigaction = &a;
+	sa.sa_sigaction = &combine;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	ft_printf("Server PID: %d\n", getpid());
