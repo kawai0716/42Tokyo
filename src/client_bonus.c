@@ -28,7 +28,7 @@ void	send_to_server(unsigned char message, int pid)
 	}
 }
 
-void	a(int signal)
+void	reaction(int signal)
 {
 	if (signal == SIGUSR1)
 		ft_printf("OK\n");
@@ -51,8 +51,8 @@ int	main(int ac, char **av)
 	char	*message;
 	int		i;
 
-	signal(SIGUSR1, a);
-	signal(SIGUSR2, a);
+	signal(SIGUSR1, reaction);
+	signal(SIGUSR2, reaction);
 	if (ac != 3)
 		exit(1);
 	pid = ft_atoi(av[1]);
