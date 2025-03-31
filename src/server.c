@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-void	a(int signal)
+void	conversion(int signal)
 {
 	static char	c = 0;
 	static int	bit_count = 0;
