@@ -36,8 +36,8 @@ void	conversion(int signal)
 int	main(void)
 {
 	ft_printf("Server PID: %d\n", getpid());
-	signal(SIGUSR1, a);
-	signal(SIGUSR2, a);
+	signal(SIGUSR1, combine);
+	signal(SIGUSR2, combine);
 	while (1)
 		pause();
 	return (0);
