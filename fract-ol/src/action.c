@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "fractol.h"nyo
 
 void ft_zoom(double x, double y, t_fractol *fractol)
 {
