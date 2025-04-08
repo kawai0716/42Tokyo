@@ -1,10 +1,20 @@
 #include "fractol.h"
 
-void ft_zoom(double x, double y, t_fractol *fractol)
+void ft_zoom_in(double x, double y, t_fractol *fractol)
 {
-    
+    fractol->x = (x / fractol->zoom) - (x / (fractol->zoom * 1.25));
+    fractol->y = (y / fractol->zoom) - (y / (fractol->zoom * 1.25));
+    fractol->zoom*=1.25;
+    fractol->i++;
 }
 
+void ft_zoom_out(double x, double y, t_fractol *fractol)
+{
+    fractol->x = (x / fractol->zoom) - (x / (fractol->zoom / 1.25));
+    fractol->y = (y / fractol->zoom) - (y / (fractol->zoom / 1.25));
+    fractol->zoom/=1.25;
+    fractol->i++;
+}
 int key_action(int keycode, t_fractol *fractol)
 {
     if(keycode == ESC)
@@ -32,9 +42,9 @@ int mouse_action(int keycode, int x, int y, t_fractol *fractol)
     double mouse_y = ((double)y - fractol->height / 2);
 
     if(keycode == scroll_up)
-        ft_zoom(mouse_x, mouse_y, fractol);
+        ft_zoom_in(mouse_x, mouse_y, fractol);
     else if(keycode == scroll_down)
-        ft_zoom(mouse_x, mouse_y, fractol);
+        ft_zoom_out(mouse_x, mouse_y, fractol);
     fractol_update(fractol);
     return(0);
 }

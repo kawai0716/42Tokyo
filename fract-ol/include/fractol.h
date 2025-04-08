@@ -36,7 +36,7 @@ typedef struct s_fractol
     int endian;
     int height;
     int width;
-    int 
+    int i;
     int color;
 }   t_fractol;
 
