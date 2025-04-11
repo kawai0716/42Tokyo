@@ -15,8 +15,7 @@
 # define minus 65453
 # define scroll_up 4
 # define scroll_down 5
-# define
-# define
+# define MAX_ITERATIONS 150
 # define close_window_button 17
 
 typedef struct s_fractol
@@ -36,7 +35,6 @@ typedef struct s_fractol
     int endian;
     int height;
     int width;
-    int i;
     int color;
 }   t_fractol;
 

@@ -5,7 +5,6 @@ void ft_zoom_in(double x, double y, t_fractol *fractol)
     fractol->x = (x / fractol->zoom) - (x / (fractol->zoom * 1.25));
     fractol->y = (y / fractol->zoom) - (y / (fractol->zoom * 1.25));
     fractol->zoom*=1.25;
-    fractol->i++;
 }
 
 void ft_zoom_out(double x, double y, t_fractol *fractol)
@@ -13,7 +12,6 @@ void ft_zoom_out(double x, double y, t_fractol *fractol)
     fractol->x = (x / fractol->zoom) - (x / (fractol->zoom / 1.25));
     fractol->y = (y / fractol->zoom) - (y / (fractol->zoom / 1.25));
     fractol->zoom/=1.25;
-    fractol->i++;
 }
 int key_action(int keycode, t_fractol *fractol)
 {

@@ -3,10 +3,13 @@ void mandelbrot(t_fractol *fractol, char *name)
 {
 	fractol->name=name;
 	fractol->color=0xE6CCFF;
-	fractol->width;
-	fractol->height;
-	fractol->zoom;
-	fractol->;
+	fractol->width=1280;
+	fractol->height=720;
+	fractol->zoom=1;
+	fractol->x=0;
+	fractol->y=0;
+	fractol->xarrow=0;
+	fractol->yarrow=0;
 	fractol->;
 	fractol->;
 }
@@ -14,9 +17,9 @@ void julia(t_fractol *fractol, char *name)
 {
 	fractol->name=name;
 	fractol->color=0xE6CCFF;
-	fractol->;
-	fractol->;
-	fractol->;
+	fractol->width=1280;
+	fractol->height=720;
+	fractol->zoom=1;
 	fractol->;
 	fractol->;
 	fractol->;
