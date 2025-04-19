@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/14 15:02:20 by sykawai           #+#    #+#             */
+/*   Updated: 2025/04/14 15:09:25 by sykawai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include "libft"
-#include "minilibx-linux/mlx.h"
-#include <math.h>
-#include <stdio.h>
+# include "libft"
+# include "minilibx-linux/mlx.h"
+# include <math.h>
+# include <stdio.h>
 
 # define ESC 65307
-# define right 65363
-# define left 65361
-# define up 65362
-# define down 65364
-# define plus 65451
-# define minus 65453
-# define scroll_up 4
-# define scroll_down 5
+# define RIGHT 65363
+# define LEFT 65361
+# define UP 65362
+# define DOWM 65364
+# define PLUS 65451
+# define MINUS 65453
+# define SCROLL_UP 4
+# define SCROLL_DOWM 5
 # define MAX_ITERATIONS 150
-# define close_window_button 17
+# define CLOSE_WINDOW_BUTTON 17
 
 typedef struct s_complex
 {
