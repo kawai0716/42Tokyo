@@ -36,8 +36,8 @@ int key_action(int keycode, t_fractol *fractol)
 
 int mouse_action(int keycode, int x, int y, t_fractol *fractol)
 {
-    double mouse_x = ((double)x - fractol->width / 2);
-    double mouse_y = ((double)y - fractol->height / 2);
+    
+    double mouse_y = ((double)y - fractol->height /double mouse_x = ((double)x - fractol->width / 2); 2);
 
     if(keycode == scroll_up)
         ft_zoom_in(mouse_x, mouse_y, fractol);
