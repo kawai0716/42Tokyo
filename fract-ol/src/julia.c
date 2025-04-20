@@ -14,7 +14,18 @@
 
 t_complex mappoint(int x, int y, t_stack *fractol)
 {
-    
+	t_complex c;
+	double i;
+	
+    if(fractol->width > fractol->height)
+		i = fractol->width * fractol->zoom;
+	else
+		i = fractol->height * fractol->zoom;
+	x+=fractol->xarrow;
+	y+=fractol->yarrow;
+	c.x = 2 * fractol->radius * (x-fractol->width/2) / i;
+	c.y = 2 * fractol->radius * (y-fractol->height/2) / i;
+	return (c);
 }
 
 void julia_set(t_stack *fractol)
