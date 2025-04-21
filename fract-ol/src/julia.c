@@ -34,7 +34,7 @@ void julia_set(t_stack *fractol)
     int y;
     int n;
     t_complex z;
-    t_complex c;
+    t_complex tmp;
 
     x = 0;
     while (fractol->width > x)
@@ -43,6 +43,18 @@ void julia_set(t_stack *fractol)
         while (fractol->height > y)
         {
             z = mappoint(x, y, fractol);
+            n = 0;
+            while (z.x * z.x + z.y * z.y <= 4 && n < MAX_ITERATIONS)
+            {
+                tmp.x = z.x * z.x - z.y * z.y + fractol->c.x;
+                tmp.y = 2 * z.x * z.y + fractol->c.y;
+                z = tmp;
+                n++;
+            }
+            if (n == MAX_ITERATIONS)
+                put_pixel(fractol, x, y, 0x00000000);
+            else
+                put_pixel(fractol, x, y, fractol->color * n);
             y++; 
         }
         x++;
