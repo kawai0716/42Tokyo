@@ -12,6 +12,16 @@
 
 #include "fractol.h"
 
+int close_action(t_fractol *fractol)
+{
+	mlx_destroy_window(fractol->mlx, fractol->win);
+	mlx_destroy_image(fractol->mlx, fractol->img);
+	free(fractol->addr);
+	free(fractol);
+	exit(0);
+	return(0);
+}
+
 void	ft_zoom_in(double x, double y, t_fractol *fractol)
 {
 	fractol->x = (x / fractol->zoom) - (x / (fractol->zoom * 1.25));
@@ -29,7 +39,7 @@ void	ft_zoom_out(double x, double y, t_fractol *fractol)
 int	key_action(int keycode, t_fractol *fractol)
 {
 	if (keycode == ESC)
-		close_game(fractol);
+		close_action(fractol);
 	else if (keycode == UP)
 		fractol->yarrow -= 30;
 	else if (keycode == DOWM)

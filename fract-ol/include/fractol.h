@@ -13,7 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "libft"
+# include "Libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -57,32 +57,37 @@ typedef struct s_fractol
     t_complex c;
 }   t_fractol;
 
-//initialization
+
 void mandelbrot_set(t_fractol *fractol, char *name);
 void julia_set(t_fractol *fractol, char *name);
+void put_pixel(t_fractol *fractol, int x, int y, int color);
+void fractol_update(t_fractol *fractol);
+void fractol_check(char **av, t_fractol *fractol);
+
+#endif
       
 
-typedef struct s_fractal
-{
-	void		*mlx;				// MLXインスタンスへのポインタ
-	void		*win;				// ウィンドウへのポインタ
-	void		*img;				// MLXで作成した画像へのポインタ
-	char		*addr;				// 画像のピクセルデータのアドレス
-	int			bits_per_pixel;		// ピクセルあたりのビット数（色深度）
-	int			line_length;		// 画像の1行あたりのバイト数
-	int			endian;				// エンディアン形式 (データの並び順)
-	int			width;				// 画像（ウィンドウ）の横幅
-	int			height;				// 画像（ウィンドウ）の縦幅
-	int			iterations;			// フラクタルの計算反復回数（繰り返す数が多いほど精度が上がる）
-	double		zoom;				// 現在のズーム倍率
-	double		xarrow;				// X方向の移動量（矢印キーで移動した量）
-	double		yarrow;				// Y方向の移動量（矢印キーで移動した量）
-	double		x;					// ズーム位置調整時のx座標オフセット
-	double		y;					// ズーム位置調整時のy座標オフセット
-	double		radius;				// 複素平面上の描画半径（特にジュリア集合）
-	int			color;				// 描画色（ピクセルの色のベース値）
-	char		*name;				// フラクタルタイプの名前 ("julia", "mandelbrot" など)
-	t_complex	c;					// ジュリア集合などで使われる定数（複素数）
-}	t_fractal;
+// typedef struct s_fractal
+// {
+// 	void		*mlx;				// MLXインスタンスへのポインタ
+// 	void		*win;				// ウィンドウへのポインタ
+// 	void		*img;				// MLXで作成した画像へのポインタ
+// 	char		*addr;				// 画像のピクセルデータのアドレス
+// 	int			bits_per_pixel;		// ピクセルあたりのビット数（色深度）
+// 	int			line_length;		// 画像の1行あたりのバイト数
+// 	int			endian;				// エンディアン形式 (データの並び順)
+// 	int			width;				// 画像（ウィンドウ）の横幅
+// 	int			height;				// 画像（ウィンドウ）の縦幅
+// 	int			iterations;			// フラクタルの計算反復回数（繰り返す数が多いほど精度が上がる）
+// 	double		zoom;				// 現在のズーム倍率
+// 	double		xarrow;				// X方向の移動量（矢印キーで移動した量）
+// 	double		yarrow;				// Y方向の移動量（矢印キーで移動した量）
+// 	double		x;					// ズーム位置調整時のx座標オフセット
+// 	double		y;					// ズーム位置調整時のy座標オフセット
+// 	double		radius;				// 複素平面上の描画半径（特にジュリア集合）
+// 	int			color;				// 描画色（ピクセルの色のベース値）
+// 	char		*name;				// フラクタルタイプの名前 ("julia", "mandelbrot" など)
+// 	t_complex	c;					// ジュリア集合などで使われる定数（複素数）
+// }	t_fractal;
 
 

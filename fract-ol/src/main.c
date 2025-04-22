@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 		fractol_update(&fractol);
 		mlx_key_hook(fractol.mlx, key_action, &fractol);
 		mlx_mouse_hook(fractol.mlx, mouse_action, &fractol);
-		mlx_hook(fractol.mlx, CLOSE_WINDOW_BUTTON, , , &fractol);
+		mlx_hook(fractol.mlx, CLOSE_WINDOW_BUTTON, , close_action, &fractol);
 		mlx_loop(fractol.mlx);
 	}
 	return (0);
