@@ -1,36 +1,37 @@
-# Makefile for fract-ol project
+CC		= cc
+CFLAGS	= -Wall -Werror -Wextra -I./include/
+RM = rm -rf
+NAME	= push_swap
 
-# Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
 
-# Directories
-SRC_DIR = src
-OBJ_DIR = obj
-INC_DIR = include
+SRCS = src/action.c src/initialization.c src/julia.c src/main.c src/mandelbrot.c
+OBJS = $(SRCS:.c=.o)
 
-# Files
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-NAME = fractol
-
-# Rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "───────────▄───────────"
+	@echo "────────▄▀░░░░░░░░▀▄─────"
+	@echo "──────▄▀░░░░░░░░░░░░▀▄────"
+	@echo "─────█░░░░░░░░░░░░░░░█────"
+	@echo "─────█░░░░░░░░░░░░░░░█────"
+	@echo "─────█░░░░▄▀▀▀▄░░░▄▀▀▀▄──"
+	@echo "─────▄█░░▄▀　　▀▄▀　　▀▄──"
+	@echo "────█░░▄▀　　　　　　　▀▄──"
+	@echo "────▀▄▀　　　●　　●　　　▀▄─"
+	@echo "─────▀▄　　　　▲　　　　　█─"
+	@echo "──────▀▄　　　　　　　　▄▀─"
+	@echo "────────▀▀▄▄▄▄▄▄▄▄▄▄▄▀▀───"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+src/%.o: src/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ_DIR)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
