@@ -69,3 +69,6 @@ void	mandelbrot_set(t_stack *fractol)
 		x++;
 	}
 }
+git add .
+git commit -m "kawai"
+git push
