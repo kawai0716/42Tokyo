@@ -6,37 +6,37 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:30 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/14 15:11:36 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/24 15:24:33 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int close_action(t_fractol *fractol)
+int	close_action(t_stack *fractol)
 {
 	mlx_destroy_window(fractol->mlx, fractol->win);
 	mlx_destroy_image(fractol->mlx, fractol->img);
 	free(fractol->addr);
 	free(fractol);
 	exit(0);
-	return(0);
+	return (0);
 }
 
-void	ft_zoom_in(double x, double y, t_fractol *fractol)
+void	ft_zoom_in(double x, double y, t_stack *fractol)
 {
 	fractol->x = (x / fractol->zoom) - (x / (fractol->zoom * 1.25));
 	fractol->y = (y / fractol->zoom) - (y / (fractol->zoom * 1.25));
 	fractol->zoom *= 1.25;
 }
 
-void	ft_zoom_out(double x, double y, t_fractol *fractol)
+void	ft_zoom_out(double x, double y, t_stack *fractol)
 {
 	fractol->x = (x / fractol->zoom) - (x / (fractol->zoom / 1.25));
 	fractol->y = (y / fractol->zoom) - (y / (fractol->zoom / 1.25));
 	fractol->zoom /= 1.25;
 }
 
-int	key_action(int keycode, t_fractol *fractol)
+int	key_action(int keycode, t_stack *fractol)
 {
 	if (keycode == ESC)
 		close_action(fractol);
@@ -57,7 +57,7 @@ int	key_action(int keycode, t_fractol *fractol)
 	return (0);
 }
 
-int	mouse_action(int keycode, int x, int y, t_fractol *fractol)
+int	mouse_action(int keycode, int x, int y, t_stack *fractol)
 {
 	double	mouse_x;
 	double	mouse_y;

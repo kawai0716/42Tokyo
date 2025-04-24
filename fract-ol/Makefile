@@ -1,7 +1,7 @@
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -I./include/
 RM = rm -rf
-NAME	= push_swap
+NAME	= fractol
 
 
 SRCS = src/action.c src/initialization.c src/julia.c src/main.c src/mandelbrot.c

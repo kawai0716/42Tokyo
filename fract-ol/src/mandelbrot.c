@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:47 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/14 15:03:04 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/24 18:14:48 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_pixel(t_stack *fractol, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	mandelbrot(double cr, double ci, int i)
+int	mandelbrot_calculation(double cr, double ci)
 {
 	double	zr;
 	double	zi;
@@ -59,7 +59,7 @@ void	mandelbrot_set(t_stack *fractol)
 				/ (fractol->width - 1) - 2.0;
 			ci = (y + fractol->yarrow) / fractol->zoom * (1.12 + 1.12)
 				/ (fractol->height - 1) - 1.12;
-			n = mandelbrot(cr, ci);
+			n = mandelbrot_calculation(cr, ci);
 			if (n == MAX_ITERATIONS)
 				put_pixel(fractol, x, y, 0x000000);
 			else
