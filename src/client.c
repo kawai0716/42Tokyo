@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/10 18:11:11 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:51:29 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	send_to_server(unsigned char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(420);
+		usleep(1200);
 	}
 }
 

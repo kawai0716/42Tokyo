@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:12 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/10 18:09:45 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:12:23 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	conversion(int signal)
 int	main(void)
 {
 	ft_printf("Server PID: %d\n", getpid());
-	signal(SIGUSR1, combine);
-	signal(SIGUSR2, combine);
+	signal(SIGUSR1, conversion);
+	signal(SIGUSR2, conversion);
 	while (1)
 		pause();
 	return (0);

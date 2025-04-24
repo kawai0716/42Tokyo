@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 01:00:05 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/10 18:49:58 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:58:38 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	send_to_server(unsigned char message, int pid)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(420);
+		usleep(2500);
 	}
 }
 
@@ -62,7 +62,7 @@ int	main(int ac, char **av)
 	while (message[i])
 	{
 		send_to_server(message[i], pid);
-			i++;
+		i++;
 	}
 	send_to_server('\0', pid);
 	return (0);
