@@ -14,9 +14,10 @@
 
 void	fractol_update(t_stack *fractol)
 {
-	mlx_destroy_image(fractol->mlx, fractol->img);
+	if(fractol->img)
+		mlx_destroy_image(fractol->mlx, fractol->img);
 	fractol->img = mlx_new_image(fractol->mlx, fractol->width, fractol->height);
-	fractol->addr = mlx_get_data_addr(fractol->mlx, &fractol->bits_per_pixel,
+	fractol->addr = mlx_get_data_addr(fractol->img, &fractol->bits_per_pixel,
 			&fractol->size_line, &fractol->endian);
 	if (!ft_strncmp(fractol->name, "mandelbrot", 10))
 		mandelbrot_set(fractol);
@@ -31,30 +32,37 @@ void	fractol_check(int ac, char **av, t_stack *fractol)
 	double	real;
 	double	imag;
 
-	real = ft_atoi(av[2]);
-	imag = ft_atoi(av[3]);
 	tmp = av[1];
 	if (!ft_strncmp(tmp, "mandelbrot", 10) && ft_strlen(tmp) == 10 && ac == 2)
 		mandelbrot(fractol, av[1]);
 	else if (!ft_strncmp(tmp, "julia", 5) && ft_strlen(tmp) == 5 && ac == 4)
+	{
+		real = ft_atoi(av[2]);
+		imag = ft_atoi(av[3]);
 		julia(fractol, av[1], real, imag);
+	}
+	else
+	{
+		ft_putstr_fd("Usage: ./fractol <mandelbrot/julia> [real] [imaginary]\n", 2);
+		exit(1);
+	}
 }
 
 int	main(int ac, char **av)
 {
 	t_stack	fractol;
 
+	fractol.img = NULL;
 	if (ac == 2 || ac == 4)
 	{
 		fractol_check(ac, av, &fractol);
 		fractol.mlx = mlx_init();
 		fractol.win = mlx_new_window(fractol.mlx, fractol.width, fractol.height,
 				fractol.name);
-		fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
 		fractol_update(&fractol);
 		mlx_key_hook(fractol.mlx, key_action, &fractol);
 		mlx_mouse_hook(fractol.mlx, mouse_action, &fractol);
-		mlx_hook(fractol.mlx, CLOSE_WINDOW_BUTTON, 1L << 17, close_action,
+		mlx_hook(fractol.mlx, CLOSE_WINDOW_BUTTON, DESTROYNOTIFY, close_action,
 				&fractol);
 		mlx_loop(fractol.mlx);
 	}

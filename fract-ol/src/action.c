@@ -16,8 +16,6 @@ int	close_action(t_stack *fractol)
 {
 	mlx_destroy_window(fractol->mlx, fractol->win);
 	mlx_destroy_image(fractol->mlx, fractol->img);
-	free(fractol->addr);
-	free(fractol);
 	exit(0);
 	return (0);
 }
@@ -42,7 +40,7 @@ int	key_action(int keycode, t_stack *fractol)
 		close_action(fractol);
 	else if (keycode == UP)
 		fractol->yarrow -= 30;
-	else if (keycode == DOWM)
+	else if (keycode == DOWN)
 		fractol->yarrow += 30;
 	else if (keycode == RIGHT)
 		fractol->xarrow += 30;
@@ -66,7 +64,7 @@ int	mouse_action(int keycode, int x, int y, t_stack *fractol)
 	mouse_y = ((double)y - fractol->height / 2);
 	if (keycode == SCROLL_UP)
 		ft_zoom_in(mouse_x, mouse_y, fractol);
-	else if (keycode == SCROLL_DOWM)
+	else if (keycode == SCROLL_DOWN)
 		ft_zoom_out(mouse_x, mouse_y, fractol);
 	fractol_update(fractol);
 	return (0);

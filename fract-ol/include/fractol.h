@@ -22,13 +22,14 @@
 # define RIGHT 65363
 # define LEFT 65361
 # define UP 65362
-# define DOWM 65364
+# define DOWN 65364
 # define PLUS 65451
 # define MINUS 65453
 # define SCROLL_UP 4
-# define SCROLL_DOWM 5
+# define SCROLL_DOWN 5
 # define MAX_ITERATIONS 150
 # define CLOSE_WINDOW_BUTTON 17
+# define DESTROYNOTIFY 131072
 
 typedef struct s_complex
 {

@@ -1,5 +1,6 @@
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -I./include/
+LDFLAGS = -L./minilibx-linux -lmlx -lX11 -lXext -lm
 RM = rm -rf
 NAME	= fractol
 
@@ -10,7 +11,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS)
 	@echo "───────────▄───────────"
 	@echo "────────▄▀░░░░░░░░▀▄─────"
 	@echo "──────▄▀░░░░░░░░░░░░▀▄────"
