@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:20 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/24 18:15:13 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/26 21:44:15 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,10 @@ int				close_action(t_stack *fractol);
 int				key_action(int keycode, t_stack *fractol);
 int				mouse_action(int keycode, int x, int y, t_stack *fractol);
 void			put_pixel(t_stack *fractol, int x, int y, int color);
+void			fractol_update(t_stack *fractol);
+void			mandelbrot(t_stack *fractol, char *name);
+void			julia(t_stack *fractol, char *name, double real, double imag);
+t_complex		mappoint(int x, int y, t_stack *fractol);
+double			ft_atof(char *str);
 
 #endif

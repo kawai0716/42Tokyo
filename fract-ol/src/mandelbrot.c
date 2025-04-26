@@ -6,22 +6,13 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:47 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/24 18:14:48 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/26 21:59:24 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	put_pixel(t_stack *fractol, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = fractol->addr + (y * fractol->size_line + x * (fractol->bits_per_pixel
-				/ 8));
-	*(unsigned int *)dst = color;
-}
-
-int	mandelbrot_calculation(double cr, double ci)
+static int	mandelbrot_calculation(double cr, double ci)
 {
 	double	zr;
 	double	zi;
@@ -43,29 +34,23 @@ int	mandelbrot_calculation(double cr, double ci)
 
 void	mandelbrot_set(t_stack *fractol)
 {
-	int		x;
-	int		y;
-	int		n;
-	double	cr;
-	double	ci;
+	int			n;
+	t_complex	z;
 
-	x = 0;
-	while (fractol->width > x)
+	fractol->x = 0;
+	while (fractol->width > fractol->x)
 	{
-		y = 0;
-		while (fractol->height > y)
+		fractol->y = 0;
+		while (fractol->height > fractol->y)
 		{
-			cr = (x + fractol->xarrow) / fractol->zoom * (0.47 + 2.0)
-				/ (fractol->width - 1) - 2.0;
-			ci = (y + fractol->yarrow) / fractol->zoom * (1.12 + 1.12)
-				/ (fractol->height - 1) - 1.12;
-			n = mandelbrot_calculation(cr, ci);
+			z = mappoint(fractol->x, fractol->y, fractol);
+			n = mandelbrot_calculation(z.x, z.y);
 			if (n == MAX_ITERATIONS)
-				put_pixel(fractol, x, y, 0x000000);
+				put_pixel(fractol, fractol->x, fractol->y, 0x000000);
 			else
-				put_pixel(fractol, x, y, fractol->color * n);
-			y++;
+				put_pixel(fractol, fractol->x, fractol->y, fractol->color * n);
+			fractol->y++;
 		}
-		x++;
+		fractol->x++;
 	}
 }

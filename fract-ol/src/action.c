@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:30 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/24 15:24:33 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/26 21:44:15 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,16 @@ int	close_action(t_stack *fractol)
 	return (0);
 }
 
-void	ft_zoom_in(double x, double y, t_stack *fractol)
+static void	zoom_mouse(int x, int y, t_stack *fractol, double zoom_factor)
 {
-	fractol->x = (x / fractol->zoom) - (x / (fractol->zoom * 1.25));
-	fractol->y = (y / fractol->zoom) - (y / (fractol->zoom * 1.25));
-	fractol->zoom *= 1.25;
-}
+	t_complex	before;
+	t_complex	after;
 
-void	ft_zoom_out(double x, double y, t_stack *fractol)
-{
-	fractol->x = (x / fractol->zoom) - (x / (fractol->zoom / 1.25));
-	fractol->y = (y / fractol->zoom) - (y / (fractol->zoom / 1.25));
-	fractol->zoom /= 1.25;
+	before = mappoint(x, y, fractol);
+	fractol->zoom *= zoom_factor;
+	after = mappoint(x, y, fractol);
+	fractol->xarrow += (before.x - after.x) * fractol->width;
+	fractol->yarrow += (before.y - after.y) * fractol->height;
 }
 
 int	key_action(int keycode, t_stack *fractol)
@@ -57,15 +55,10 @@ int	key_action(int keycode, t_stack *fractol)
 
 int	mouse_action(int keycode, int x, int y, t_stack *fractol)
 {
-	double	mouse_x;
-	double	mouse_y;
-
-	mouse_x = ((double)x - fractol->width / 2);
-	mouse_y = ((double)y - fractol->height / 2);
 	if (keycode == SCROLL_UP)
-		ft_zoom_in(mouse_x, mouse_y, fractol);
+		zoom_mouse(x, y, fractol, 1.3);
 	else if (keycode == SCROLL_DOWN)
-		ft_zoom_out(mouse_x, mouse_y, fractol);
+		zoom_mouse(x, y, fractol, 1 / 1.3);
 	fractol_update(fractol);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:33 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/24 18:16:14 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:05:35 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	mandelbrot(t_stack *fractol, char *name)
 	fractol->y = 0;
 	fractol->xarrow = 0;
 	fractol->yarrow = 0;
+	fractol->radius = 2;
 }
 
 void	julia(t_stack *fractol, char *name, double real, double imag)

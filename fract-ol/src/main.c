@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:41 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/24 18:16:40 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/26 20:42:38 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fractol_update(t_stack *fractol)
 {
-	if(fractol->img)
+	if (fractol->img)
 		mlx_destroy_image(fractol->mlx, fractol->img);
 	fractol->img = mlx_new_image(fractol->mlx, fractol->width, fractol->height);
 	fractol->addr = mlx_get_data_addr(fractol->img, &fractol->bits_per_pixel,
@@ -26,7 +26,7 @@ void	fractol_update(t_stack *fractol)
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 }
 
-void	fractol_check(int ac, char **av, t_stack *fractol)
+static void	fractol_check(int ac, char **av, t_stack *fractol)
 {
 	char	*tmp;
 	double	real;
@@ -37,15 +37,14 @@ void	fractol_check(int ac, char **av, t_stack *fractol)
 		mandelbrot(fractol, av[1]);
 	else if (!ft_strncmp(tmp, "julia", 5) && ft_strlen(tmp) == 5 && ac == 4)
 	{
-		real = ft_atoi(av[2]);
-		imag = ft_atoi(av[3]);
+		real = ft_atof(av[2]);
+		imag = ft_atof(av[3]);
+		if ((real > 2.0 || real < -2.0) || (imag >= 2.0 || imag <= -2.0))
+			exit(1);
 		julia(fractol, av[1], real, imag);
 	}
 	else
-	{
-		ft_putstr_fd("Usage: ./fractol <mandelbrot/julia> [real] [imaginary]\n", 2);
 		exit(1);
-	}
 }
 
 int	main(int ac, char **av)
@@ -60,10 +59,10 @@ int	main(int ac, char **av)
 		fractol.win = mlx_new_window(fractol.mlx, fractol.width, fractol.height,
 				fractol.name);
 		fractol_update(&fractol);
-		mlx_key_hook(fractol.mlx, key_action, &fractol);
-		mlx_mouse_hook(fractol.mlx, mouse_action, &fractol);
-		mlx_hook(fractol.mlx, CLOSE_WINDOW_BUTTON, DESTROYNOTIFY, close_action,
-				&fractol);
+		mlx_key_hook(fractol.win, key_action, &fractol);
+		mlx_mouse_hook(fractol.win, mouse_action, &fractol);
+		mlx_hook(fractol.win, CLOSE_WINDOW_BUTTON, DESTROYNOTIFY, close_action,
+			&fractol);
 		mlx_loop(fractol.mlx);
 	}
 	return (0);
