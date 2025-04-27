@@ -23,6 +23,8 @@ void	fractol_update(t_stack *fractol)
 		mandelbrot_set(fractol);
 	else if (!ft_strncmp(fractol->name, "julia", 5))
 		julia_set(fractol);
+	else if (!ft_strncmp(fractol->name, "burningship", 11))
+		burning_ship_set(fractol);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 }
 
@@ -43,6 +45,8 @@ static void	fractol_check(int ac, char **av, t_stack *fractol)
 			exit(1);
 		julia(fractol, av[1], real, imag);
 	}
+	else if (!ft_strncmp(tmp, "burningship", 11) && ft_strlen(tmp) == 11 && ac == 2)
+		burning_ship(fractol, av[1]);
 	else
 		exit(1);
 }

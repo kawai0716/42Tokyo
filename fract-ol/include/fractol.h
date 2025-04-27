@@ -61,6 +61,7 @@ typedef struct s_stack
 
 void			mandelbrot_set(t_stack *fractol);
 void			julia_set(t_stack *fractol);
+void 			burning_ship_set(t_stack *fractol);
 int				close_action(t_stack *fractol);
 int				key_action(int keycode, t_stack *fractol);
 int				mouse_action(int keycode, int x, int y, t_stack *fractol);
@@ -70,5 +71,6 @@ void			mandelbrot(t_stack *fractol, char *name);
 void			julia(t_stack *fractol, char *name, double real, double imag);
 t_complex		mappoint(int x, int y, t_stack *fractol);
 double			ft_atof(char *str);
+double 			change_plus(double i);
 
 #endif

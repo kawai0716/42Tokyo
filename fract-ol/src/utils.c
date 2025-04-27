@@ -12,6 +12,13 @@
 
 #include "fractol.h"
 
+double change_plus(double i)
+{
+	if(i < 0)
+		return (i * -1);
+	return (i);
+}
+
 static double	parse_integer_part(char *str, int *i)
 {
 	double	integer_part;
