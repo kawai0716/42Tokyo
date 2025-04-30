@@ -1,25 +1,36 @@
-#ifndef PHILOSOPHERS_H
-#define PHILOSOPHERS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/30 16:41:19 by sykawai           #+#    #+#             */
+/*   Updated: 2025/04/30 17:47:07 by sykawai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <semaphore.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/time.h>
-#include <stdbool.h>
-#include <limits.h>
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
+
+# include <limits.h>
+# include <semaphore.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/time.h>
+# include <unistd.h>
 
 tyepedef struct s_rule
 {
-    
-} t_rule;
-typedef struct s_philo
+}					t_rule;
+typedef struct s_philos
 {
-    int             id;
-    int             eat_count;
-    long            last_eat_time;
-    pthread_mutex_t      right_fork;
-    pthread_mutex_t      left_fork;
-    t_rule *rule    t_philo;
-} t_philo;
+	int				id;
+	int				eat_count;
+	long			last_eat_time;
+	pthread_mutex_t	right_fork;
+	pthread_mutex_t	left_fork;
+	t_rule 			*rule;
+}					t_philos;
