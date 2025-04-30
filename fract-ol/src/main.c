@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:41 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/26 20:42:38 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 14:56:15 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	fractol_check(int ac, char **av, t_stack *fractol)
 			exit(1);
 		julia(fractol, av[1], real, imag);
 	}
-	else if (!ft_strncmp(tmp, "burningship", 11) && ft_strlen(tmp) == 11 && ac == 2)
+	else if (!ft_strncmp(tmp, "burningship", 11) && ft_strlen(tmp) == 11
+		&& ac == 2)
 		burning_ship(fractol, av[1]);
 	else
 		exit(1);

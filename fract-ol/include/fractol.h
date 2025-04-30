@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:20 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/26 21:44:15 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 14:55:03 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_stack
 
 void			mandelbrot_set(t_stack *fractol);
 void			julia_set(t_stack *fractol);
-void 			burning_ship_set(t_stack *fractol);
+void			burning_ship_set(t_stack *fractol);
 int				close_action(t_stack *fractol);
 int				key_action(int keycode, t_stack *fractol);
 int				mouse_action(int keycode, int x, int y, t_stack *fractol);
@@ -69,8 +69,9 @@ void			put_pixel(t_stack *fractol, int x, int y, int color);
 void			fractol_update(t_stack *fractol);
 void			mandelbrot(t_stack *fractol, char *name);
 void			julia(t_stack *fractol, char *name, double real, double imag);
+void			burning_ship(t_stack *fractol, char *name);
 t_complex		mappoint(int x, int y, t_stack *fractol);
 double			ft_atof(char *str);
-double 			change_plus(double i);
+double			change_plus(double i);
 
 #endif

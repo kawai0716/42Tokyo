@@ -7,7 +7,7 @@ RM = rm -rf
 NAME	= fractol
 
 
-SRCS = src/share.c src/action.c src/initialization.c src/julia.c src/main.c src/mandelbrot.c src/utils.c
+SRCS =src/burning_ship.c src/share.c src/action.c src/initialization.c src/julia.c src/main.c src/mandelbrot.c src/utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

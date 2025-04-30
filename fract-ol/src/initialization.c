@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:33 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/26 22:05:35 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 14:51:53 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	julia(t_stack *fractol, char *name, double real, double imag)
 	fractol->c.y = imag;
 }
 
-void burning_ship(t_stack *fractol, char *name)
+void	burning_ship(t_stack *fractol, char *name)
 {
 	fractol->name = name;
 	fractol->color = 0xE6CCFF;

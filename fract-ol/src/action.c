@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:02:30 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/26 21:44:15 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 15:28:22 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	close_action(t_stack *fractol)
 
 static void	zoom_mouse(int x, int y, t_stack *fractol, double zoom_factor)
 {
-	t_complex	before;
-	t_complex	after;
+	double	dx;
+	double	dy;
 
-	before = mappoint(x, y, fractol);
+	dx = x - (fractol->width / 2.0);
+	dy = y - (fractol->height / 2.0);
+	fractol->xarrow = fractol->xarrow * zoom_factor + dx * (zoom_factor - 1.0);
+	fractol->yarrow = fractol->yarrow * zoom_factor + dy * (zoom_factor - 1.0);
 	fractol->zoom *= zoom_factor;
-	after = mappoint(x, y, fractol);
-	fractol->xarrow += (before.x - after.x) * fractol->width;
-	fractol->yarrow += (before.y - after.y) * fractol->height;
 }
 
 int	key_action(int keycode, t_stack *fractol)
