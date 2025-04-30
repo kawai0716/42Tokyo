@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:42:59 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/30 19:39:04 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 20:26:16 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 t_philos	*stack_new(int i)
 {
-	t_philos	*philos;
+	t_philos	*philo;
 
-	philos = malloc(sizeof(t_philos));
-	if (!philos)
+	philo = malloc(sizeof(t_philos));
+	if (!philo)
 	{
 		printf("Error: Memory allocation failed.\n");
 		exit(1);
 	}
-	philos->id = i;
-	philos->eat_count = 0;
-	philos->last_eat_time = 0;
-	pthread_mutex_init(&philos->right_fork, NULL);
-	pthread_mutex_init(&philos->left_fork, NULL);
+	philo->id = i;
+	philo->eat_count = 0;
+	philo->last_eat_time = 0;
+	pthread_mutex_init(&philo->right_fork, NULL);
+	pthread_mutex_init(&philo->left_fork, NULL);
 	return (philos);
 }
 
 t_philos	*fill_stack(int ac, char **av)
 {
-	t_philos *philos;
+	t_philo *philo;
 	int i;
 
 	i = 0;

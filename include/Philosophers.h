@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:41:19 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/30 17:47:07 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 20:26:35 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 tyepedef struct s_rule
 {
 }					t_rule;
-typedef struct s_philos
+typedef struct s_philo
 {
 	int				id;
 	int				eat_count;
@@ -33,4 +33,4 @@ typedef struct s_philos
 	pthread_mutex_t	right_fork;
 	pthread_mutex_t	left_fork;
 	t_rule 			*rule;
-}					t_philos;
+}					t_philo;

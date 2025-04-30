@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:41:26 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/30 17:46:27 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/04/30 20:25:52 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ void	chech_argument(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_atoi(av[i]) <= 0)
+		if (ft_atoi(av[i]) <= 0 && i == 1)
+		{
+			printf("Error: Argument %d is not a positive integer.\n", i);
+			exit(1);
+		}
+		else if(ft_atoi(av[i]) < 0 && i != 1 )
 		{
 			printf("Error: Argument %d is not a positive integer.\n", i);
 			exit(1);
@@ -31,7 +36,7 @@ void	chech_argument(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_philos *z;
+	t_philo *z;
 
 	if (ac == 5 || ac == 6)
 	{
