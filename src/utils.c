@@ -12,6 +12,20 @@
 
 #include "Philosophers.h"
 
+int check_number(char *av)
+{
+	int i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (av[i] < '0' || av[i] > '9')
+			return(0);
+		i++;
+	}
+	return(1);
+}
+
 int	ft_atoi(const char *str)
 {
 	int i = 0;

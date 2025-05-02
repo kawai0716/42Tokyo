@@ -13,6 +13,7 @@
 #include "Philosophers.h"
 
 //./philo 5 800 200 200 (5) 引数は、何人寿命、食事時間、睡眠時間、最大食事回数(ないなら無限ループ、あるなら制限付きループ)
+
 void	chech_argument(int ac, char **av)
 {
 	int	i;
@@ -20,28 +21,35 @@ void	chech_argument(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_atoi(av[i]) <= 0 && i == 1)
+		if(!check_number(av[i]))
 		{
-			printf("Error: Argument %d is not a positive integer.\n", i);
-			exit(1);
+			printf("Error: Argument is not a number.\n");
+			return(0);
 		}
-		else if(ft_atoi(av[i]) < 0 && i != 1 )
+		if (ft_atoi(av[i]) <= 0 && ft_atoi(av[i]) > INT_MAX)
 		{
-			printf("Error: Argument %d is not a positive integer.\n", i);
-			exit(1);
+			printf("Error: Argument %s is not a positive integer.\n", av[i]);
+			return(0);
 		}
 		i++;
 	}
+	return(1);
 }
 
 int	main(int ac, char **av)
 {
 	t_philo *z;
+	int i;
 
 	if (ac == 5 || ac == 6)
 	{
-		chech_argument(ac, av);
+		if(!chech_argument(ac, av))
+		{
+			free(z.rule);
+			return(0);
+		}
 		z = fill_satck(ac, av);
+		i = ft_atoi(av[1]);
 	}
 	return(0);
 }

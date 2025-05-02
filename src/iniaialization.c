@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Philosophers.h"
+#include "philosophers.h"
 
-t_philos	*stack_new(int i)
+t_philo	*stack_new(int i)
 {
-	t_philos	*philo;
+	t_philo	*philo;
 
-	philo = malloc(sizeof(t_philos));
+	philo = malloc(sizeof(t_philo));
 	if (!philo)
 	{
 		printf("Error: Memory allocation failed.\n");
@@ -27,20 +27,20 @@ t_philos	*stack_new(int i)
 	philo->last_eat_time = 0;
 	pthread_mutex_init(&philo->right_fork, NULL);
 	pthread_mutex_init(&philo->left_fork, NULL);
-	return (philos);
+	return (philo);
 }
 
-t_philos	*fill_stack(int ac, char **av)
+t_philo	*fill_stack(int ac, char **av)
 {
 	t_philo *philo;
 	int i;
 
 	i = 0;
-	philos = NULL;
+	philo = NULL;
 	while (i < ft_atoi(av[1]))
 	{
-		philos = stack_new(i);
+		philo = stack_new(i);
 		i++;
 	}
-	return (philos);
+	return (philo);
 }

@@ -1,53 +1,64 @@
-NUM	= 4
-SLEEP	= 200
-EAT	= 200
-DIE	= 410
-TIMES	= -1;
+#======================= 設定値（デフォルトは環境変数で上書き可） =======================
+NUM   ?= 4
+SLEEP ?= 200
+EAT   ?= 200
+DIE   ?= 410
+TIMES ?= -1
 
-INC	= includes/
+INC      := includes/
+UNAME    := $(shell uname -s)    # 例: Linux, Darwin, FreeBSD, MINGW64_NT-10.0-19045
+NAME     := philo
 
-UNAME	:= $(shell uname)
+SRC      := $(wildcard src/*.c)
+OBJ      := $(SRC:%.c=%.o)
 
-NAME	= philo
+CFLAGS   := -Wall -Wextra -Werror -O3 -I$(INC) -g
 
-SRC	= $(wildcard src/*.c)
-
-OBJ	= $(SRC:%.c=%.o)
-
-CFLAGS	= -Wall -Werror -Wextra -O3 -I$(INC) -g
-
-RM	= rm -f
-
-ifeq ($(UNAME), Darwin)
-	CC	= clang
-else ifeq ($(UNAME), FreeBSD)
-	CC	= clang
-else
-	CC	= gcc
+# ── MSYS2/MinGW では glibc の _FORTIFY_SOURCE が衝突するので無効化
+ifneq (,$(findstring MINGW,$(UNAME)))
+  CFLAGS += -U_FORTIFY_SOURCE
 endif
+
+#======================= コンパイラ判定 =======================
+ifeq ($(UNAME),Darwin)
+  CC := clang
+else ifeq ($(UNAME),FreeBSD)
+  CC := clang
+else
+  CC := gcc        # Linux, MSYS2/MinGW など
+endif
+
+LDFLAGS  := -lpthread
+RM       := rm -f
+
+#======================= ターゲット =======================
+.PHONY: all clean re run show
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ) -lpthread
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
 
+fclean: clean
+	$(RM) $(NAME)
+
 re: clean all
 
-run:
+run: $(NAME)
 	./$(NAME) $(NUM) $(DIE) $(EAT) $(SLEEP) $(TIMES)
 
 show:
-	@printf "UNAME		: $(UNAME)\n"
-	@printf "NAME  		: $(NAME)\n"
-	@printf "CC		: $(CC)\n"
-	@printf "CFLAGS		: $(CFLAGS)\n"
-	@printf "SRC		: $(SRC)\n"
-	@printf "OBJ		: $(OBJ)\n"
-
+	@printf "UNAME   : %s\n" "$(UNAME)"
+	@printf "NAME    : %s\n" "$(NAME)"
+	@printf "CC      : %s\n" "$(CC)"
+	@printf "CFLAGS  : %s\n" "$(CFLAGS)"
+	@printf "SRC     : %s\n" "$(SRC)"
+	@printf "OBJ     : %s\n" "$(OBJ)"
 
 .PHONY:	all clean re show
-
-
