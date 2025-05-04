@@ -24,12 +24,12 @@ void	chech_argument(int ac, char **av)
 		if(!check_number(av[i]))
 		{
 			printf("Error: Argument is not a number.\n");
-			return(0);
+			exit(1);
 		}
 		if (ft_atoi(av[i]) <= 0 && ft_atoi(av[i]) > INT_MAX)
 		{
 			printf("Error: Argument %s is not a positive integer.\n", av[i]);
-			return(0);
+			exit(1);
 		}
 		i++;
 	}
@@ -43,11 +43,7 @@ int	main(int ac, char **av)
 
 	if (ac == 5 || ac == 6)
 	{
-		if(!chech_argument(ac, av))
-		{
-			free(z.rule);
-			return(0);
-		}
+		chech_argument(ac, av);
 		z = fill_satck(ac, av);
 		i = ft_atoi(av[1]);
 	}
