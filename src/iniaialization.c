@@ -16,30 +16,33 @@ t_philo	*stack_new(int i)
 {
 	t_philo	*philo;
 
-	philo = malloc(sizeof(t_philo));
+	philo = malloc(sizeof(t_philo) * rule->n_philo);
 	if (!philo)
 	{
 		printf("Error: Memory allocation failed.\n");
 		exit(1);
 	}
-	philo->id = i;
+	philo->id = i + 1;
 	philo->eat_count = 0;
-	philo->last_eat_time = 0;
-	pthread_mutex_init(&philo->right_fork, NULL);
-	pthread_mutex_init(&philo->left_fork, NULL);
+	philo->last_eat_time = rule->start_ms;
+	philo->rule = rule;
+	philo->left = &rule->forks[i];
+	if (i + 1 == rule->n_philo)
+		philo->right = &rule->forks[0];
+	else
+		philo->right = &rule->forks[i + 1];
 	return (philo);
 }
 
-t_philo	*fill_stack(int ac, char **av)
+t_philo	*fill_stack(t_rule *rule)
 {
 	t_philo *philo;
 	int i;
 
 	i = 0;
-	philo = NULL;
-	while (i < ft_atoi(av[1]))
+	while (i < rule->n_philo)
 	{
-		philo = stack_new(i);
+		philo[i] = stack_new(i);
 		i++;
 	}
 	return (philo);
