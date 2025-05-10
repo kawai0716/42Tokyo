@@ -35,7 +35,6 @@ typedef struct s_rule
     volatile int    finish;       /* 終了フラグ (0=進行中, 1=終了)  */
 
     /* ── 同期プリミティブ ──────────────────────── */
-    pthread_mutex_t print;        /* 標準出力用ロック                */
     pthread_mutex_t *forks;       /* フォーク (= ミューテックス配列) */
 }   t_rule;
 

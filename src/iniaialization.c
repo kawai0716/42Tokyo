@@ -12,6 +12,41 @@
 
 #include "philosophers.h"
 
+long get_tiem_ms(void)
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return(tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+t_rule *set_rule(int ac, char **av)
+{
+	t_rule	*rule;
+	int i;
+
+	rule = malloc(sizeof(t_rule));
+	rule->forks = malloc(sizeof(pthread_mutex_t) * ft_atoi(av[1]));
+	if (!rule || !rule->forks)
+	{
+		printf("Error: Memory allocation failed.\n");
+		exit(1);
+	}
+	rule->n_philo = ft_atoi(av[1]);
+	rule->t_die = ft_atoi(av[2]);
+	rule->t_eat = ft_atoi(av[3]);
+	rule->t_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		rule->must_eat = ft_atoi(av[5]);
+	else
+		rule->must_eat = -1;
+	rule->start_ms = get_tiem_ms();
+	rule->finish = 0;
+	i = 0;
+	while(rule->n_philo > i)
+		pthread_mutex_init(&rule->forks[i++], NULL);
+	return (rule);
+}
+
 t_philo	*stack_new(int i)
 {
 	t_philo	*philo;
