@@ -2,11 +2,11 @@
 
 NAME = philosophers
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./includes/
+CFLAGS = -Wall -Wextra -Werror -I./include/
 RM = rm -f
 
-SRC = main.c
-SRCS = $(addprefix src/, $(SRC))
+SRC_DIR = src
+SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
