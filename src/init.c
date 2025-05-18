@@ -12,61 +12,68 @@
 
 #include "philosophers.h"
 
-t_rule *set_rule(int ac, char **av)
+static t_rule *allocate_rule_resources(int n_philo)
 {
-    t_rule *rule;
-    int     i;
-
-    rule = malloc(sizeof(t_rule));
+    t_rule *rule = malloc(sizeof(t_rule));
     if (!rule)
     {
-        printf("Error: Memory allocation failed.\n");
+        printf("Error: malloc failed for rule\n");
         exit(1);
     }
-
-    /* パラメータ読み込み */
-    rule->n_philo  = ft_atoi(av[1]);
-    rule->t_die    = ft_atoi(av[2]);
-    rule->t_eat    = ft_atoi(av[3]);
-    rule->t_sleep  = ft_atoi(av[4]);
-    rule->must_eat = (ac == 6) ? ft_atoi(av[5]) : -1;
-
-    /* 内部カウンタ初期化 */
-    rule->start_ms = get_time_ms();
-    atomic_store(&rule->finish, 0);
-    rule->n_eat    = 0;
-	rule->finish   = 0;
-
-    /* 動的配列確保 */
-    rule->forks   = malloc(sizeof(pthread_mutex_t) * rule->n_philo);
-    rule->philos  = malloc(sizeof(t_philo)         * rule->n_philo);
-    rule->threads = malloc(sizeof(pthread_t)       * rule->n_philo);
-    if (!rule->forks || !rule->philos || !rule->threads)
+    rule->forks = malloc(sizeof(pthread_mutex_t) * n_philo);
+    rule->philos = malloc(sizeof(t_philo) * n_philo);
+    if (!rule->forks || !rule->philos)
     {
-        printf("Error: Memory allocation failed.\n");
+        printf("Error: malloc failed for forks or philos\n");
+        free(rule->forks);
+        free(rule->philos);
+        free(rule);
         exit(1);
     }
-	/* ミューテックス初期化 */
-    pthread_mutex_init(&rule->print,     NULL);
-	pthread_mutex_init(&rule->finish_mutex, NULL);
-    pthread_mutex_init(&rule->eat_mutex, NULL);
-    for (i = 0; i < rule->n_philo; i++)
-        pthread_mutex_init(&rule->forks[i], NULL);
-
-    return rule;
+    return (rule);
 }
 
-void fill_stack(t_rule *rule)
+t_rule *init_rule(int ac, char **av)
+{
+    int i;
+    t_rule *rule;
+
+    rule = allocate_rule_resources(atoll(av[1]));
+    rule->n_philo = atoll(av[1]);
+    rule->t_die = atoll(av[2]);
+    rule->t_eat = atoll(av[3]);
+    rule->t_sleep = atoll(av[4]);
+    rule->must_eat = (ac == 6) ? atoll(av[5]) : -1;
+    rule->start_time = get_time_ms();
+    rule->finish = 0;
+
+    pthread_mutex_init(&rule->finish_mutex, NULL);
+    pthread_mutex_init(&rule->print_mutex, NULL);
+
+    i = 0;
+    while (i < rule->n_philo)
+    {
+        pthread_mutex_init(&rule->forks[i], NULL);
+        i++;
+    }
+    return (rule);
+}
+
+void init_philos(t_rule *rule)
 {
     int i;
 
-	i = 0;
+    i = 0;
     while(i < rule->n_philo)
     {
-        rule->philos[i].id            = i + 1;
-        rule->philos[i].eat_count     = 0;
-        rule->philos[i].last_eat_time = rule->start_ms;
-        rule->philos[i].rule          = rule;
-		i++;
+        t_philo *ph = &rule->philos[i];
+        ph->id       = i + 1;
+        ph->last_meal = rule->start_time;
+        ph->eat_count = 0;
+        ph->left_fork = &rule->forks[i];
+        ph->right_fork = &rule->forks[(i + 1) % rule->n_philo];
+        ph->rule     = rule;
+        pthread_mutex_init(&ph->meal_mutex, NULL);
+        i++;
     }
 }

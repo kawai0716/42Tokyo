@@ -14,59 +14,47 @@
 
 //./philo 5 800 200 200 (5) 引数は、何人寿命、食事時間、睡眠時間、最大食事回数(ないなら無限ループ、あるなら制限付きループ)
 
-static void	check_argument(int ac, char **av)
+void check_args(int ac, char **av)
 {
-	int	i;
+	int i;
+	int j;
 
-	i = 1;
-	if (ac < 5 || ac > 6)
+    if (ac < 5 || ac > 6)
     {
-        printf("Usage: %s philo_count t_die t_eat t_sleep [must_eat]\n", av[0]);
+        printf("Error: Number of arguments");
         exit(1);
     }
-	while (i < ac)
-	{
-		if(!check_number(av[i]))
-		{
-			printf("Error: Argument is not a number.\n");
-			exit(1);
-		}
-		if (ft_atoi(av[i]) <= 0 || ft_atoi(av[i]) > INT_MAX)
-		{
-			printf("Error: Argument %s is not a positive integer.\n", av[i]);
-			exit(1);
-		}
-		i++;
-	}
+	i = 1;
+    while (i < ac)
+    {
+		j = 0;
+        while (av[i][j])
+        {
+            if (av[i][j] < '0' || av[i][j] > '9')
+            {
+                printf("Error: invalid argument '%s'\n", av[i]);
+                exit(1);
+            }
+			j++;
+        }
+		i ++;
+    }
 }
 
 int main(int ac, char **av)
 {
     t_rule *rule;
-	int i;
 
-    check_argument(ac, av);
-    rule = set_rule(ac, av);
-    fill_stack(rule);
-
+    check_args(ac, av);
+    rule = init_rule(ac, av);
+    init_philos(rule);
     if (!create_threads(rule))
-        exit(1);
-    wait_for_completion(rule);
-    detach_threads(rule);
-    usleep(10000);
-	i = 0;
-	while (i < rule->n_philo)
-	{
-		pthread_mutex_destroy(&rule->forks[i]);
-		i++;
-	}
-    pthread_mutex_destroy(&rule->print);
-    pthread_mutex_destroy(&rule->eat_mutex);
-	pthread_mutex_destroy(&rule->finish_mutex);
-    free(rule->forks);
-    free(rule->philos);
-    free(rule->threads);
-    free(rule);
-
+    {
+        printf("Error: pthread_create failed\n");
+        cleanup_rule(rule);
+        return (1);
+    }
+    join_threads(rule);
+    cleanup_rule(rule);
     return (0);
 }

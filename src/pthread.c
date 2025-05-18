@@ -14,72 +14,68 @@
 
 
 /* finish フラグを安全に読むヘルパー */
-int is_finished(t_rule *r)
+int is_finish(t_rule *r)
 {
     int f;
     pthread_mutex_lock(&r->finish_mutex);
     f = r->finish;
     pthread_mutex_unlock(&r->finish_mutex);
-    return f;
+    return (f);
 }
 
 /* finish フラグを安全に立てるヘルパー */
-void set_finished(t_rule *r)
+void set_finish(t_rule *r)
 {
     pthread_mutex_lock(&r->finish_mutex);
     r->finish = 1;
     pthread_mutex_unlock(&r->finish_mutex);
 }
 
-static int all_satisfied(t_rule *r)
+void join_threads(t_rule *rule)
 {
-    if (r->must_eat < 0) return 0;
-    for (int i = 0; i < r->n_philo; i++)
-        if (r->philos[i].eat_count < r->must_eat)
-            return 0;
-    set_finished(r);
-    return 1;
-}
+    int i;
 
-static int philosopher_died(t_rule *r)
-{
-    long long now = get_time_ms();
-    for (int i = 0; i < r->n_philo; i++)
+    i = 0;
+    while (i < rule->n_philo)
     {
-        if (now - r->philos[i].last_eat_time > r->t_die)
-        {
-            set_finished(r);
-            pthread_mutex_lock(&r->print);
-            printf("%04lld %02d died\n",
-                   now - r->start_ms, r->philos[i].id);
-            pthread_mutex_unlock(&r->print);
-            return 1;
-        }
+        pthread_join(rule->philos[i].thread, NULL);
+        i++;
     }
-    return 0;
+    pthread_join(rule->monitor_thread, NULL);
 }
 
-void wait_for_completion(t_rule *r)
+void cleanup_rule(t_rule *rule)
 {
-    while (1)
+    int i;
+
+    i = 0;
+    while (i < rule->n_philo)
     {
-        if (all_satisfied(r) || philosopher_died(r))
-            break;
-        usleep(1000);
+        pthread_mutex_destroy(&rule->forks[i]);
+        pthread_mutex_destroy(&rule->philos[i].meal_mutex);
+        i++;
     }
+    pthread_mutex_destroy(&rule->finish_mutex);
+    pthread_mutex_destroy(&rule->print_mutex);
+    free(rule->forks);
+    free(rule->philos);
+    free(rule);
 }
 
-int create_threads(t_rule *r)
+int create_threads(t_rule *rule)
 {
-    for (int i = 0; i < r->n_philo; i++)
-        if (pthread_create(&r->threads[i], NULL,
-                           &routine, &r->philos[i]) != 0)
-            return 0;
-    return 1;
-}
+    int i;
 
-void detach_threads(t_rule *r)
-{
-    for (int i = 0; i < r->n_philo; i++)
-        pthread_detach(r->threads[i]);
+    i = 0;
+    while (i < rule->n_philo)
+    {
+        if (pthread_create(&rule->philos[i].thread, NULL,
+                           philo_routine, &rule->philos[i]) != 0)
+            return (0);
+        i++;
+    }
+    if (pthread_create(&rule->monitor_thread, NULL,
+                       monitor_routine, rule) != 0)
+        return (0);
+    return (1);
 }

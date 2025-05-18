@@ -19,25 +19,11 @@ long long get_time_ms(void)
 	return(tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-int check_number(char *av)
+long long	ft_atoll(const char *str)
 {
-	int i;
-
-	i = 0;
-	while (av[i])
-	{
-		if (av[i] < '0' || av[i] > '9')
-			return(0);
-		i++;
-	}
-	return(1);
-}
-
-int	ft_atoi(const char *str)
-{
-	int i = 0;
-	int sign = 1;
-	long result = 0;
+	int         i = 0;
+	int         sign = 1;
+	long long   result = 0;
 
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
