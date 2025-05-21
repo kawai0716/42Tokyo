@@ -1,7 +1,7 @@
 # Makefile for Philosophers project
 
 NAME = philosophers
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include/
 RM = rm -f
 
