@@ -12,7 +12,7 @@
 
 #include "philosophers.h"
 
-static t_rule *allocate_rule_resources(int n_philo)
+static t_rule *init_rule_malloc(int n_philo)
 {
     t_rule *rule = malloc(sizeof(t_rule));
     if (!rule)
@@ -38,12 +38,15 @@ t_rule *init_rule(int ac, char **av)
     int i;
     t_rule *rule;
 
-    rule = allocate_rule_resources(atoll(av[1]));
+    rule = init_rule_malloc(atoll(av[1]));
     rule->n_philo = atoll(av[1]);
     rule->t_die = atoll(av[2]);
     rule->t_eat = atoll(av[3]);
     rule->t_sleep = atoll(av[4]);
-    rule->must_eat = (ac == 6) ? atoll(av[5]) : -1;
+	if(ac == 6)
+		rule->must_eat = atoll(av[5]);
+	else
+		rule->must_eat = -1;
     rule->start_time = get_time_ms();
     rule->finish = 0;
 
@@ -62,11 +65,12 @@ t_rule *init_rule(int ac, char **av)
 void init_philos(t_rule *rule)
 {
     int i;
+	t_philo *ph;
 
     i = 0;
     while(i < rule->n_philo)
     {
-        t_philo *ph = &rule->philos[i];
+        ph = &rule->philos[i];
         ph->id       = i + 1;
         ph->last_meal = rule->start_time;
         ph->eat_count = 0;
