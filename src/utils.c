@@ -6,25 +6,29 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:41:30 by sykawai           #+#    #+#             */
-/*   Updated: 2025/04/30 16:41:32 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/05/23 12:59:55 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Philosophers.h"
+#include "philosophers.h"
 
-long long get_time_ms(void)
+long long	get_time_ms(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
+
 	gettimeofday(&tv, NULL);
-	return(tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 long long	ft_atoll(const char *str)
 {
-	int         i = 0;
-	int         sign = 1;
-	long long   result = 0;
+	int			i;
+	int			sign;
+	long long	result;
 
+	i = 0;
+	sign = 1;
+	result = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
