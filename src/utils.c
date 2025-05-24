@@ -6,11 +6,25 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:41:30 by sykawai           #+#    #+#             */
-/*   Updated: 2025/05/23 12:59:55 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/05/24 18:26:59 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+void	safe_print(t_rule *rule, long long ts, int id, const char *msg)
+{
+	pthread_mutex_lock(&rule->finish_mutex);
+	if (rule->finish)
+	{
+		pthread_mutex_unlock(&rule->finish_mutex);
+		return ;
+	}
+	pthread_mutex_unlock(&rule->finish_mutex);
+	pthread_mutex_lock(&rule->print_mutex);
+	printf("%04lld %02d %s\n", ts, id, msg);
+	pthread_mutex_unlock(&rule->print_mutex);
+}
 
 long long	get_time_ms(void)
 {

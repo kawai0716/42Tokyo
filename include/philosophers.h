@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:41:19 by sykawai           #+#    #+#             */
-/*   Updated: 2025/05/23 15:09:56 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/05/24 18:27:19 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ typedef struct s_rule
 /*utilities */
 long long			get_time_ms(void);
 long long			ft_atoll(const char *str);
+void				safe_print(t_rule *rule, long long ts, int id,
+						const char *msg);
 
 /* initialization */
 t_rule				*init_rule(int ac, char **av);
 void				init_philos(t_rule *rule);
 
 /* threading */
-void				safe_print(t_rule *rule, int id, const char *msg);
 void				take_forks(t_philo *ph, t_rule *rule);
 int					create_threads(t_rule *rule);
 void				join_threads(t_rule *rule);

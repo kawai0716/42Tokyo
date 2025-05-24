@@ -2,7 +2,7 @@
 
 NAME = philosophers
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -I./include/
+CFLAGS = -Wall -Wextra -Werror -I./include/
 RM = rm -f
 
 SRC_DIR = src
@@ -64,7 +64,7 @@ echo:
 	./$(NAME) 10 800 200 200 7
 
 7:
-	./$(NAME) 200 420 200 200 7 | grep "200 is eating" | wc
+	./$(NAME) 200 420 200 200 7 | grep "is eating" | wc -l
 
 ty:
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣀⢠⡤⠤⠖⠒⠒⠒⠲⣆⠀⠀⠀⠀⣾⠋⠉⠉⠛⢷⠀⣴⠖⠒⠤⣄⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
