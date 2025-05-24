@@ -2,7 +2,7 @@
 
 NAME = philosophers
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./include/
+CFLAGS = -Wall -Wextra -Werror -g -I./include/
 RM = rm -f
 
 SRC_DIR = src
