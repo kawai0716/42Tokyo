@@ -67,13 +67,13 @@ int	eat(t_philo *ph, t_rule *rule)
 	if (rule->must_eat > 0 && ph->eat_count >= rule->must_eat)
 	{
 		pthread_mutex_unlock(&ph->meal_mutex);
-		pthread_mutex_unlock(ph->left_fork);
 		pthread_mutex_unlock(ph->right_fork);
+		pthread_mutex_unlock(ph->left_fork);
 		return (0);
 	}
 	pthread_mutex_unlock(&ph->meal_mutex);
-	pthread_mutex_unlock(ph->left_fork);
 	pthread_mutex_unlock(ph->right_fork);
+	pthread_mutex_unlock(ph->left_fork);
 	return (1);
 }
 
