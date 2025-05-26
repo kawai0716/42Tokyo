@@ -1,5 +1,5 @@
 # Makefile for Philosophers project
-
+kawai
 NAME = philosophers
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include/
