@@ -1,5 +1,4 @@
 # Makefile for Philosophers project
-banana
 
 NAME = philosophers
 CC = cc
