@@ -1,5 +1,5 @@
 # Makefile for Philosophers project
-
+a
 NAME = philosophers
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include/
