@@ -27,7 +27,7 @@ void sigint_handler(int signum)
     }
 }
 
-void action_signal(void)
+void init_signal(void)
 {
     signal(SIGINT, sigint_handler);
     signal(SIGQUIT, SIG_IGN);

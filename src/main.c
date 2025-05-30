@@ -46,12 +46,21 @@ char **dup_envp(char **envp)
     return (new_envp);
 }
 
-void minihell(char **envp)
+void minihell_loop(char **envp)
 {
-    action_signal();
+    char *line;
+    init_signal();
     while(1)
     {
-        
+        line = readline("minishell> ");
+        if(!line)
+        {
+            ft_putstr_fd("\033[1A\033[11C", 0);
+            ft_putstr_fd("exit\n", 0);
+            break;
+        }
+        if(*line)
+            add_history(line);      
     }
 }
 
@@ -67,6 +76,6 @@ int main(int argc, char **argv, char **envp)
         exit (1);
     }
     new_envp = dup_envp(envp);
-    minishell(new_envp);
+    minishell_loop(new_envp);
     return (0);
 }
