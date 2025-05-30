@@ -46,17 +46,27 @@ char **dup_envp(char **envp)
     return (new_envp);
 }
 
+void minihell(char **envp)
+{
+    action_signal();
+    while(1)
+    {
+        
+    }
+}
+
 int main(int argc, char **argv, char **envp)
 {
-    char **env;
+    char **new_envp;
     (void)argv;
     
+    g_shell_mode = MODE_INTERACTIVE;
     if(argc != 1)
     {
         printf("No arguments required\n");
-        return (1);
+        exit (1);
     }
-    env = dup_envp(envp);
-    
+    new_envp = dup_envp(envp);
+    minishell(new_envp);
     return (0);
 }
