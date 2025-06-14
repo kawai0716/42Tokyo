@@ -1,13 +1,14 @@
 NAME = minishell
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./libft
+CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes
 RM = rm -f
 
 LIBFT_DIR =libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
 SRC_DIR = src
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+BUILTIN_DIR = src/builtin
+SRCS = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(BUILTIN_DIR)/*.c)
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME) $(LIBFT_LIB)
@@ -24,6 +25,7 @@ $(NAME): $(OBJS) $(LIBFT_LIB)
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	$(RM) $(OBJS)
+	$(RM) $(BUILTIN_DIR)/*.o
 
 fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
