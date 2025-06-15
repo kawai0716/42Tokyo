@@ -52,7 +52,7 @@ void minihell_loop(char **envp)
     init_signal();
     while(1)
     {
-        line = readline("minishell> ");
+        line = readline("minishell$ ");
         if(!line)
         {
             ft_putstr_fd("\033[1A\033[11C", 0);
@@ -60,7 +60,11 @@ void minihell_loop(char **envp)
             break;
         }
         if(*line)
-            add_history(line);      
+            add_history(line);
+        /*
+        parserの関数
+        */
+        ex_main();
     }
 }
 
