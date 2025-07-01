@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:41:19 by sykawai           #+#    #+#             */
-/*   Updated: 2025/05/24 18:27:19 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/07/01 16:54:22 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ long long			get_time_ms(void);
 long long			ft_atoll(const char *str);
 void				safe_print(t_rule *rule, long long ts, int id,
 						const char *msg);
+int					ft_atoi(const char *str);
 
 /* initialization */
 t_rule				*init_rule(int ac, char **av);

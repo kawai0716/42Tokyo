@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:42:59 by sykawai           #+#    #+#             */
-/*   Updated: 2025/05/24 18:36:58 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/07/01 14:38:21 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ t_rule	*init_rule(int ac, char **av)
 	int		i;
 	t_rule	*rule;
 
-	rule = init_rule_malloc(atoll(av[1]));
-	rule->n_philo = atoll(av[1]);
-	rule->t_die = atoll(av[2]);
-	rule->t_eat = atoll(av[3]);
-	rule->t_sleep = atoll(av[4]);
+	rule = init_rule_malloc(ft_atoll(av[1]));
+	rule->n_philo = ft_atoll(av[1]);
+	rule->t_die = ft_atoll(av[2]);
+	rule->t_eat = ft_atoll(av[3]);
+	rule->t_sleep = ft_atoll(av[4]);
 	if (ac == 6)
-		rule->must_eat = atoll(av[5]);
+		rule->must_eat = ft_atoll(av[5]);
 	else
 		rule->must_eat = -1;
 	rule->start_time = get_time_ms();

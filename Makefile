@@ -1,5 +1,5 @@
 # Makefile for Philosophers project
-a
+
 NAME = philosophers
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include/
@@ -61,10 +61,52 @@ echo:
 	./$(NAME) 4 310 200 100
 
 6:
-	./$(NAME) 10 800 200 200 7
+	./$(NAME) 10 800 200 200 7  | grep '06 is eating' | wc -l
 
 7:
-	./$(NAME) 200 420 200 200 7 | grep "is eating" | wc -l
+	./$(NAME) 200 420 200 200 7
+
+1v:
+	valgrind ./$(NAME) 1 800 200 200
+
+2v:
+	valgrind./$(NAME) 5 800 200 200
+
+3v:
+	valgrind ./$(NAME) 5 800 200 200 7
+
+4v:
+	valgrind./$(NAME) 4 410 200 200
+
+5v:
+	valgrind ./$(NAME) 4 310 200 100
+
+6v:
+	valgrind ./$(NAME) 10 800 200 200 7
+
+7v:
+	valgrind ./$(NAME) 200 420 200 200 7
+
+1vt:
+	valgrind --tool=helgrind ./$(NAME) 1 800 200 200
+
+2vt:
+	valgrind --tool=helgrind ./$(NAME) 5 800 200 200
+
+3vt:
+	valgrind --tool=helgrind ./$(NAME) 5 800 200 200 7
+
+4vt:
+	valgrind --tool=helgrind ./$(NAME) 4 410 200 200
+
+5vt:
+	valgrind --tool=helgrind ./$(NAME) 4 310 200 100
+
+6vt:
+	valgrind --tool=helgrind ./$(NAME) 10 800 200 200 7
+
+7vt:
+	valgrind --tool=helgrind ./$(NAME) 200 420 200 200 7
 
 ty:
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣀⢠⡤⠤⠖⠒⠒⠒⠲⣆⠀⠀⠀⠀⣾⠋⠉⠉⠛⢷⠀⣴⠖⠒⠤⣄⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
