@@ -6,7 +6,7 @@
 /*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 11:27:43 by prafael-          #+#    #+#             */
-/*   Updated: 2024/10/18 18:07:35 by sykawai          ###   ########.fr       */
+/*   Updated: 2025/07/08 16:06:58 by sykawai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,31 @@ char	*get_next_line(int fd)
 	ans = subread(fd, &buffer[fd], str);
 	free_null(&str);
 	return (ans);
+}
+
+#include "get_next_line.h"
+#include <fcntl.h> // open
+#include <stdio.h> // printf
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	fd = open("test.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("ファイルオープン失敗");
+		return (1);
+	}
+	i = 1;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("Line %d: %s", i, line); // 改行はget_next_line側に含まれる
+		free(line);
+		i++;
+	}
+	close(fd);
+	return (0);
 }
