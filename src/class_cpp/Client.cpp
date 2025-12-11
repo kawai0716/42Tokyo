@@ -19,6 +19,8 @@ Client::~Client()
 
 int Client::getFd() const { return _fd; }
 const std::string &Client::getNickname() const { return _nickname; }
+const std::string &Client::getUsername() const { return _username; }
+bool Client::isRegistered() const { return _is_registered; }
 bool Client::isAuthenticated() const { return _auth_status; }
 
 void Client::setNickname(const std::string &nick) { _nickname = nick; }

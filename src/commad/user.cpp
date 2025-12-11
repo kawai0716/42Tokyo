@@ -1,39 +1,31 @@
+#include <climits>
 #include "../../includes/class_hpp/Server.hpp"
 #include "../../includes/class_hpp/Client.hpp"
 #include "../../includes/class_hpp/Channel.hpp"
 #include "../../includes/class_hpp/Operation.hpp"
 #include "../../includes/utils.hpp"
 
-// USER username
+static void maybeCompleteRegistration(Client *client)
+{
+    if (!client->isRegistered() && client->isAuthenticated() && !client->getNickname().empty() && !client->getUsername().empty())
+    {
+        client->setRegistered(true);
+        client->sendMessage(":server 001 " + client->getNickname() + " :Welcome");
+    }
+}
 
-void nick(Client *client, Operation &operation, Server *server)
+// USER username
+void user(Client *client, Operation &operation, Server *server)
 {
     (void)server;
 
     std::vector<std::string> param = operation.getParameter();
 
-    // disallow mult parameter or no parameters
-    if (param.size() != 3)
-        return;
-
-    if (!isValidName(param[0], "-_", INT16_MAX))
+    // RFCでは4つのパラメータ (user host server :realname) を受け取る。
+    // ここでは個数だけ確認し、内容はそのまま受け入れる。
+    if (param.size() < 3)
     {
-        client->sendMessage(":server.example.com 432 * :Erroneous nickname (invalid user)");
-        return;
-    }
-    if (!isValidName(param[1], "-_", INT16_MAX))
-    {
-        client->sendMessage(":server.example.com 432 * :Erroneous nickname (invalid user)");
-        return;
-    }
-    if (!isValidName(param[2], "-_", INT16_MAX))
-    {
-        client->sendMessage(":server.example.com 432 * :Erroneous nickname (invalid user)");
-        return;
-    }
-    if (!isValidName(operation.getTrailing(), "-_", INT16_MAX))
-    {
-        client->sendMessage(":server.example.com 432 * :Erroneous nickname (invalid user)");
+        client->sendMessage(":server 461 USER :Not enough parameters");
         return;
     }
 
@@ -41,4 +33,5 @@ void nick(Client *client, Operation &operation, Server *server)
     client->setHostname(param[1]);
     client->setServername(param[2]);
     client->setRealname(operation.getTrailing());
+    maybeCompleteRegistration(client);
 }

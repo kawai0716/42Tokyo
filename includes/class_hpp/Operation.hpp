@@ -24,6 +24,7 @@ enum COMMAND
     INVITE,
     TOPIC,
     MODE,
+    CAP,
     PASS,
     UNKNOWN
 };
@@ -59,5 +60,6 @@ void invite(Client *, Operation &, Server *);
 void topic(Client *, Operation &, Server *);
 void mode(Client *, Operation &, Server *);
 void pass(Client *, Operation &, Server *);
+void cap(Client *, Operation &, Server *);
 
 #endif

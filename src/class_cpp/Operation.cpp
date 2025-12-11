@@ -11,6 +11,7 @@ CommandFunc COMMANDFUNC[] = {
     invite,
     topic,
     mode,
+    cap,
     pass,
 };
 
@@ -36,6 +37,8 @@ static COMMAND stringToCommand(const std::string &token)
         return TOPIC;
     if (token == "MODE")
         return MODE;
+    if (token == "CAP")
+        return CAP;
     if (token == "PASS")
         return PASS;
     return UNKNOWN;

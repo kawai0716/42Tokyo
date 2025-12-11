@@ -4,16 +4,14 @@
 #include "../../includes/class_hpp/Operation.hpp"
 #include "../../includes/utils.hpp"
 
-// TODO: 各コマンドの実装は後で埋める。現在はサーバー起動確認用のスタブ。
-void nick(Client *, Operation &, Server *);
-void user(Client *, Operation &, Server *) {}
-void join(Client *, Operation &, Server *) {}
-void part(Client *, Operation &, Server *) {}
-void quit(Client *, Operation &, Server *) {}
-void kick(Client *, Operation &, Server *) {}
-void invite(Client *, Operation &, Server *) {}
-void topic(Client *, Operation &, Server *) {}
-void mode(Client *, Operation &, Server *) {}
+static void maybeCompleteRegistration(Client *client)
+{
+    if (!client->isRegistered() && client->isAuthenticated() && !client->getNickname().empty() && !client->getUsername().empty())
+    {
+        client->setRegistered(true);
+        client->sendMessage(":server 001 " + client->getNickname() + " :Welcome");
+    }
+}
 
 // NICK parameter
 
@@ -42,5 +40,6 @@ void nick(Client *client, Operation &operation, Server *server)
     }
 
     client->setNickname(operation.getParameter()[0]);
+    maybeCompleteRegistration(client);
     std::cout << "set new nickname\n";
 }

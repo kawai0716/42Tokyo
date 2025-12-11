@@ -29,6 +29,8 @@ public:
 
     int getFd() const;
     const std::string &getNickname() const;
+    const std::string &getUsername() const;
+    bool isRegistered() const;
     bool isAuthenticated() const;
 
     void setNickname(const std::string &nick);

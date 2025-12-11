@@ -10,9 +10,12 @@ SRCS = \
 	src/class_cpp/Channel.cpp \
 	src/class_cpp/Client.cpp \
 	src/class_cpp/Operation.cpp \
+	src/commad/cap.cpp \
 	src/commad/nick.cpp \
 	src/commad/pass.cpp \
 	src/commad/privmsg.cpp \
+	src/commad/user.cpp \
+	src/commad/stub.cpp \
 	src/utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)
