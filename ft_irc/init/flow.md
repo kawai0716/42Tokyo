@@ -1,0 +1,23 @@
+### ft_irc サーバー起動〜受信の流れ（現状の骨格）
+- `src/main.cpp`  
+  - `Server server(port, password);` を生成。  
+  - `server.run();` でイベントループに入る。
+- `Server::Server` → `initSocket()` (`src/class_cpp/Server.cpp:22-86`)  
+  - `socket` → `setsockopt(SO_REUSEADDR)` → `fcntl` でノンブロッキング化 → `bind` → `listen`。  
+  - リッスンFDを `POLLIN` で `_pfds` に登録。
+- `Server::run()` (`src/class_cpp/Server.cpp:209-254`)  
+  - `refreshPollEvents()` で各FDの `POLLIN/POLLOUT` を更新。  
+  - `poll()` でイベント待ち。  
+  - リッスンFDに `POLLIN` → `acceptNewClient()` で `accept`、ノンブロック化、`Client` を `_clients` へ、`_pfds` に追加。  
+  - それ以外のFDにイベント → `handleClientData()` で受信処理、`POLLOUT` があれば送信フラッシュ。
+- `handleClientData()` (`src/class_cpp/Server.cpp:168-207`)  
+  - 先頭に PASS 確認用ループがあり、`return;` で後段に進まず `bool` も返さない状態（現状バグ）。  
+  - 本来は `recv` → `appendReceiveBuffer` → `extractCommand` (`\r\n` 区切り) → `handleClientMessage` → 切断判定の流れ。
+- `handleClientMessage()` (`src/class_cpp/Server.cpp:256-265`)  
+  - 1行コマンド文字列を `Operation` でパースし、`COMMANDFUNC` テーブルから該当コマンド関数（nick/user/join…）を呼ぶ。
+- `Client` (`src/class_cpp/Client.cpp`)  
+  - 受信バッファ: `appendReceiveBuffer` / `extractCommand` (`\r\n` 区切り)。  
+  - 送信キュー: `queueMessage` / `flushSend` / `hasPendingSend`。  
+  - 状態: ニックネーム/ユーザ名/認証フラグを持つが、認証ロジックは未完成。
+- `Operation` (`src/class_cpp/Operation.cpp`)  
+  - `<COMMAND> <param> ... :trailing` 形式を分解し、`getCommandFunc()` で対応関数ポインタを返す。コマンド実装は多くがスタブ。
