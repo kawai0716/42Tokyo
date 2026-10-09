@@ -1,0 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sykawai <sykawai@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/15 01:00:05 by marvin            #+#    #+#             */
+/*   Updated: 2025/04/24 14:58:38 by sykawai          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minitalk_bonus.h"
+
+void	send_to_server(unsigned char message, int pid)
+{
+	int	i;
+
+	i = 7;
+	while (i >= 0)
+	{
+		if (message & (0x01 << i))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		i--;
+		usleep(2500);
+	}
+}
+
+void	reaction(int signal)
+{
+	if (signal == SIGUSR1)
+		ft_printf("OK\n");
+	else
+		ft_printf("OK\n");
+}
+
+void	pid_error(int pid)
+{
+	if (pid <= 0 || kill(pid, 0) == -1)
+	{
+		ft_printf("Inavalid PID\n");
+		exit(1);
+	}
+}
+
+int	main(int ac, char **av)
+{
+	pid_t	pid;
+	char	*message;
+	int		i;
+
+	signal(SIGUSR1, reaction);
+	signal(SIGUSR2, reaction);
+	if (ac != 3)
+		exit(1);
+	pid = ft_atoi(av[1]);
+	pid_error(pid);
+	message = av[2];
+	i = 0;
+	while (message[i])
+	{
+		send_to_server(message[i], pid);
+		i++;
+	}
+	send_to_server('\0', pid);
+	return (0);
+}
